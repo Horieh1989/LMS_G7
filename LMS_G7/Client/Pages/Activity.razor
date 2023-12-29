@@ -1,0 +1,50 @@
+﻿@page "/Activity"
+
+<PageTitle>Activity</PageTitle>
+
+<h3>Activity</h3>
+<div class="preference">
+<label>E-Learning <input type="text" /></label>
+</div>
+<div class="preference">
+<label>Practice <input type="text" /></label>
+    </div>
+    <div class="preference">
+<label>Lectures <input type="text" /></label>
+</div>
+
+<button class="btn btn-primary" @onclick="Add">Add</button>
+
+<p role="status">Activity Added!</p>
+
+<div id="content">
+    <label for="label1">Label 1:</label>
+    <span id="label1" style="display: @label1Visibility">Activity Name</span>
+
+    <label for="label2">Label 2:</label>
+    <span id="label2" style="display: @label2Visibility">Activity Type</span>
+
+    <label for="label1">Label 3:</label>
+    <span id="label1" style="display: @label3Visibility">Start Date</span>
+
+    <label for="label2">Label 4:</label>
+    <span id="label2" style="display: @label4Visibility">End Date</span>
+
+    <!-- Add more labels and text spans as needed -->
+</div>
+
+@code {   
+    private bool showLabels = false;
+
+    private string label1Visibility => showLabels ? "block" : "none";
+    private string label2Visibility => showLabels ? "block" : "none";
+    private string label3Visibility => showLabels ? "block" : "none";
+    private string label4Visibility => showLabels ? "block" : "none";
+
+    private void Add()
+    {
+        showLabels = !showLabels;
+    }
+}
+
+
