@@ -5,14 +5,9 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS_G7.Server", "LMS_G7\Server\LMS_G7.Server.csproj", "{051E2BCF-B102-43B6-909B-86B30BE13A11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS_G7.Client", "LMS_G7\Client\LMS_G7.Client.csproj", "{09511A5A-0B9E-4D92-B89D-B1BDA728800B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS_G7.Client", "LMS_G7\Client\LMS_G7.Client.csproj", "{09511A5A-0B9E-4D92-B89D-B1BDA728800B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS_G7.Shared", "LMS_G7\Shared\LMS_G7.Shared.csproj", "{B52C7DBE-9EA6-4BBE-9785-DEAC7416A6EE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EABEB92F-5FC6-4C5E-A7A5-1092DCDD6ADE}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS_G7.Shared", "LMS_G7\Shared\LMS_G7.Shared.csproj", "{B52C7DBE-9EA6-4BBE-9785-DEAC7416A6EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
