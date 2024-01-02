@@ -1,50 +1,89 @@
-﻿@page "/Activity"
+﻿<!-- Activity.razor -->
 
-<PageTitle>Activity</PageTitle>
+@page "/Activity"
+@using LMS_G7.Shared
 
-<h3>Activity</h3>
-<div class="preference">
-<label>E-Learning <input type="text" /></label>
-</div>
-<div class="preference">
-<label>Practice <input type="text" /></label>
+<h3>Activities</h3>
+
+
+<!-- Existing activities with default values -->
+<table>
+    <th scope="column">
+<tr><p>
+  <label>E-Learning Sessions <button name="e-learn" @onclick="showelearn">Assigned</button></label>
+        </p>
+    </tr>
+        
+    
+ <tr><p>
+    <label>Lectures <button name="lecture">Assigned</button></label>
+       </p> 
+    </tr>
+
+<tr><p>
+            <label>Practice Sessions <button name="sessions">UnAssigned</button></label>
+        </p>
+</tr>
+<tr><p>
+  <label>Assignments <button name="asssignments">UnAssigned</button></label>
+      </p>  
+    </tr>
+    
+<button @onclick="ShowActivity">Add Activity</button>
+</Authentication>
+@if (showActivityItems)
+{
+    <div class="hidden-items">
+        <p></p>
+        <p><label>Add Activity</label></p>
+        <p><input id="Name" type="text" placeholder="Activity Name" @bind="newActivity.Name" /></p>
+        <p><input id="activity" type="text" placeholder="Activity Type" @bind="newActivity.ActivityType" /></p>
+        <p><input id="description" type="text" placeholder="Description" @bind="newActivity.Description" /></p>
+        <p><input id="startdate" type="text" placeholder="Start Date" @bind="newActivity.StartDate" /></p>
+        <p><input id="enddate" type="text" placeholder="End Date" @bind="newActivity.EndDate" /></p>
+        <button @onclick="AddActivity">Save Activity</button>
     </div>
-    <div class="preference">
-<label>Lectures <input type="text" /></label>
-</div>
-
-<button class="btn btn-primary" @onclick="Add">Add</button>
-
-<p role="status">Activity Added!</p>
-
-<div id="content">
-    <label for="label1">Label 1:</label>
-    <span id="label1" style="display: @label1Visibility">Activity Name</span>
-
-    <label for="label2">Label 2:</label>
-    <span id="label2" style="display: @label2Visibility">Activity Type</span>
-
-    <label for="label1">Label 3:</label>
-    <span id="label1" style="display: @label3Visibility">Start Date</span>
-
-    <label for="label2">Label 4:</label>
-    <span id="label2" style="display: @label4Visibility">End Date</span>
-
-    <!-- Add more labels and text spans as needed -->
-</div>
-
-@code {   
-    private bool showLabels = false;
-
-    private string label1Visibility => showLabels ? "block" : "none";
-    private string label2Visibility => showLabels ? "block" : "none";
-    private string label3Visibility => showLabels ? "block" : "none";
-    private string label4Visibility => showLabels ? "block" : "none";
-
-    private void Add()
-    {
-        showLabels = !showLabels;
-    }
 }
 
+@if(elearnitems)
+{
+    <div class="hidden-items">
+        <p></p>
+        <p><label>Excersice Details</label></p>
+        <p><input id="Name" type="text" placeholder="Show Detaisl About the Activity" @bind="newActivity.Name" /></p>
+        
+        <button>Delete</button> 
+        <button>Edit</button>
+    </div>
+    
+}
+</table>
 
+@code {
+    private bool showActivityItems = false;
+    private ActivityModel newActivity = new ActivityModel();
+
+    private bool elearnitems=false;
+
+    private void showelearn()
+    {
+        elearnitems = true;
+    }
+
+    private void ShowActivity()
+    {
+        showActivityItems = true;
+    }
+
+    private async Task AddActivity()
+    {
+       // await ActivityController.AddActivity(newActivity);
+        // Add logic to save the newActivity to your local database or perform any other desired actions.
+        // For simplicity, let's just print the details for now.
+        Console.WriteLine($"New Activity Added: {newActivity.Name}, {newActivity.ActivityType}, {newActivity.Description}, {newActivity.StartDate}, {newActivity.EndDate}");
+
+        // Reset the form and hide the input fields
+        newActivity = new ActivityModel();
+        showActivityItems = false;
+    }
+}

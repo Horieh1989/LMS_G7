@@ -79,3 +79,12 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+    .button-container button {
+        padding: 10px;
+    }
