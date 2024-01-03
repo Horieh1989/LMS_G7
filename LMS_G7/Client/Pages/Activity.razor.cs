@@ -9,6 +9,9 @@ namespace LMS_G7.Client.Pages
 
         private bool elearnitems = false;
 
+        private bool showActivity = true;
+
+        private bool showPopup = false;
         private void showelearn()
         {
             elearnitems = true;
@@ -29,18 +32,18 @@ namespace LMS_G7.Client.Pages
             // Reset the form and hide the input fields
             newActivity = new ActivityModel();
             showActivityItems = false;
-        }
-        private bool showActivity = true;
-
-        private void ToggleTables()
-        {
-            showActivityItems = elearnitems;
-        }
-        private bool showPopup = false;
-
+        }       
         private void OpenPopup()
         {
             showPopup = true;
         }
+
+        private void HandlePopupVisibilityChange(bool isVisible)
+        {
+            showPopup = isVisible;
+            StateHasChanged(); // Update the UI
+        }
+
     }
+   
 }
