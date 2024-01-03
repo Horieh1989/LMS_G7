@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Shared\LMS_G7.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\" />
-  </ItemGroup>
-
 </Project>
