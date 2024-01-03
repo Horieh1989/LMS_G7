@@ -7,7 +7,9 @@
 
 
 <!-- Existing activities with default values -->
+
 <table>
+   
     <th scope="column">
 <tr><p>
   <label>E-Learning Sessions <button name="e-learn" @onclick="showelearn">Assigned</button></label>
@@ -30,9 +32,12 @@
     </tr>
     
 <button @onclick="ShowActivity">Add Activity</button>
-</Authentication>
+</th>
+
 @if (showActivityItems)
 {
+        <th scope="column">
+    <tr>
     <div class="hidden-items">
         <p></p>
         <p><label>Add Activity</label></p>
@@ -43,10 +48,13 @@
         <p><input id="enddate" type="text" placeholder="End Date" @bind="newActivity.EndDate" /></p>
         <button @onclick="AddActivity">Save Activity</button>
     </div>
+    </tr>
+    </th>
 }
 
 @if(elearnitems)
-{
+{ <th scope="column">
+    <tr>
     <div class="hidden-items">
         <p></p>
         <p><label>Excersice Details</label></p>
@@ -54,7 +62,21 @@
         
         <button>Delete</button> 
         <button>Edit</button>
+                <button>Upload Documents</button>
+
+                <link rel="stylesheet" href="styles.css" />
+
+                
+                <button @onclick="OpenPopup">Open Popup</button>
+
+                
+                    @if (showPopup)
+                    {
+                    <Popup />
+                    }
     </div>
+        </tr>
+        </th>
     
 }
 </table>
@@ -85,5 +107,17 @@
         // Reset the form and hide the input fields
         newActivity = new ActivityModel();
         showActivityItems = false;
+    }
+    private bool showActivity = true;
+
+    private void ToggleTables()
+    {
+        showActivityItems = elearnitems;
+    }
+    private bool showPopup = false;
+
+    private void OpenPopup()
+    {
+        showPopup = true;
     }
 }
