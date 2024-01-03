@@ -1,0 +1,19 @@
+﻿<h3>Popup</h3>
+@page "/Popup.razor"
+@using LMS_G7.Shared
+<div class="popup-overlay" @onclick="ClosePopup">
+    <div class="popup-content">
+        <button class="close-button" @onclick="ClosePopup">X</button>
+        <h3>Popup Content Goes Here</h3>
+        <!-- Add your popup content here -->
+    </div>
+</div>
+
+@code {
+
+    private void ClosePopup()
+    {
+        
+    }
+
+}

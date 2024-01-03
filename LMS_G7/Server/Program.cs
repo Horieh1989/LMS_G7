@@ -1,3 +1,4 @@
+using LMS_G7.Server.Controllers;
 using LMS_G7.Server.Data;
 using LMS_G7.Server.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -11,6 +12,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDbContext<ApplicationDbContext>();
+builder.Services.AddScoped<ActivityController>();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();

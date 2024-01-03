@@ -1,0 +1,87 @@
+﻿<!-- Activity.razor -->
+@page "/Activity"
+@using LMS_G7.Shared
+
+<h3>Activities</h3>
+
+
+<!-- Existing activities with default values -->
+
+<table>
+
+    <th scope="column">
+    <tr>
+        <p>
+            <label>E-Learning Sessions <button name="e-learn" @onclick="showelearn">Assigned</button></label>
+        </p>
+    </tr>
+
+
+    <tr>
+        <p>
+            <label>Lectures <button name="lecture">Assigned</button></label>
+        </p>
+    </tr>
+
+    <tr>
+        <p>
+            <label>Practice Sessions <button name="sessions">UnAssigned</button></label>
+        </p>
+    </tr>
+    <tr>
+        <p>
+            <label>Assignments <button name="asssignments">UnAssigned</button></label>
+        </p>
+    </tr>
+
+    <button @onclick="ShowActivity">Add Activity</button>
+    </th>
+
+    @if (showActivityItems)
+    {
+        <th scope="column">
+        <tr>
+            <div class="hidden-items">
+                <p></p>
+                <p><label>Add Activity</label></p>
+                <p><input id="Name" type="text" placeholder="Activity Name" @bind="newActivity.Name" /></p>
+                <p><input id="activity" type="text" placeholder="Activity Type" @bind="newActivity.ActivityType" /></p>
+                <p><input id="description" type="text" placeholder="Description" @bind="newActivity.Description" /></p>
+                <p><input id="startdate" type="text" placeholder="Start Date" @bind="newActivity.StartDate" /></p>
+                <p><input id="enddate" type="text" placeholder="End Date" @bind="newActivity.EndDate" /></p>
+                <button @onclick="AddActivity">Save Activity</button>
+            </div>
+        </tr>
+        </th>
+    }
+
+        @if (elearnitems)
+        {
+        <th scope="column">
+        <tr>
+            <div class="hidden-items">
+                <p></p>
+                <p><label>Excersice Details</label></p>
+                <p><input id="Name" type="text" placeholder="Show Detaisl About the Activity" @bind="newActivity.Name" /></p>
+
+                <button>Delete</button>
+                <button>Edit</button>
+                <button>Upload Documents</button>
+
+                <link rel="stylesheet" href="styles.css" />
+
+
+                <button @onclick="OpenPopup">Open Popup</button>
+
+
+                        @if (showPopup)
+                        {
+                    <Popup />
+                        }
+            </div>
+        </tr>
+        </th>
+
+        }  
+</table>
+

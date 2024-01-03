@@ -3,14 +3,14 @@ using System.ComponentModel;
 using System.Reflection.Metadata;
 using System.Reflection;
 
-namespace LMS_G7.Shared
+namespace LMS_G7.Shared.Domain
 {
     public enum Name
     {
         DotNetProgramming,
         SupportTeknik,
         Systemdeveloper
-        
+
 
 
     }
@@ -19,7 +19,7 @@ namespace LMS_G7.Shared
         public int CourseId { get; set; }
         //[DisplayName("course name")]
         //[StringLength(20)]
-        public Name Name { get; set; } 
+        public Name Name { get; set; }
         public string Description { get; set; }
 
         //Fk
@@ -32,6 +32,6 @@ namespace LMS_G7.Shared
         public ICollection<Document> Documents { get; set; }
 
     }
-   
+
 }
 
