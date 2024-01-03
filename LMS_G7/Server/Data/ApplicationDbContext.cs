@@ -1,6 +1,6 @@
 ﻿using Duende.IdentityServer.EntityFramework.Options;
 using LMS_G7.Server.Models;
-using LMS_G7.Shared;
+using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;

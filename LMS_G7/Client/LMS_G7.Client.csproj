@@ -9,11 +9,15 @@
   <ItemGroup>
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
     <Compile Remove="Pages\ModuleUpdate.razor.cs" />
+    <Compile Remove="Services\IModuleDataService.cs" />
+    <Compile Remove="Services\ModuleDataService.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Pages\ModuleAdd.razor.cs" />
     <Content Include="Pages\ModuleUpdate.razor.cs" />
+    <Content Include="Services\IModuleDataService.cs" />
+    <Content Include="Services\ModuleDataService.cs" />
   </ItemGroup>
 
   <ItemGroup>

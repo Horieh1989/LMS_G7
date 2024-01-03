@@ -1,10 +1,10 @@
 ﻿using LMS_G7.Server.Data;
-using LMS_G7.Shared;
+using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS_G7.Server.Controllers
-{       
-        [ApiController]
+{
+    [ApiController]
         [Route("api/[controller]")]
         public class ActivityController : ControllerBase
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMS_G7.Shared
+namespace LMS_G7.Shared.Domain
 {
     // ActivityModel.cs
 
