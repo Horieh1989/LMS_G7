@@ -1,5 +1,4 @@
 ﻿<!-- Activity.razor -->
-
 @page "/Activity"
 @using LMS_G7.Shared
 
@@ -9,115 +8,80 @@
 <!-- Existing activities with default values -->
 
 <table>
-   
+
     <th scope="column">
-<tr><p>
-  <label>E-Learning Sessions <button name="e-learn" @onclick="showelearn">Assigned</button></label>
+    <tr>
+        <p>
+            <label>E-Learning Sessions <button name="e-learn" @onclick="showelearn">Assigned</button></label>
         </p>
     </tr>
-        
-    
- <tr><p>
-    <label>Lectures <button name="lecture">Assigned</button></label>
-       </p> 
+
+
+    <tr>
+        <p>
+            <label>Lectures <button name="lecture">Assigned</button></label>
+        </p>
     </tr>
 
-<tr><p>
+    <tr>
+        <p>
             <label>Practice Sessions <button name="sessions">UnAssigned</button></label>
         </p>
-</tr>
-<tr><p>
-  <label>Assignments <button name="asssignments">UnAssigned</button></label>
-      </p>  
     </tr>
-    
-<button @onclick="ShowActivity">Add Activity</button>
-</th>
-
-@if (showActivityItems)
-{
-        <th scope="column">
     <tr>
-    <div class="hidden-items">
-        <p></p>
-        <p><label>Add Activity</label></p>
-        <p><input id="Name" type="text" placeholder="Activity Name" @bind="newActivity.Name" /></p>
-        <p><input id="activity" type="text" placeholder="Activity Type" @bind="newActivity.ActivityType" /></p>
-        <p><input id="description" type="text" placeholder="Description" @bind="newActivity.Description" /></p>
-        <p><input id="startdate" type="text" placeholder="Start Date" @bind="newActivity.StartDate" /></p>
-        <p><input id="enddate" type="text" placeholder="End Date" @bind="newActivity.EndDate" /></p>
-        <button @onclick="AddActivity">Save Activity</button>
-    </div>
+        <p>
+            <label>Assignments <button name="asssignments">UnAssigned</button></label>
+        </p>
     </tr>
+
+    <button @onclick="ShowActivity">Add Activity</button>
     </th>
-}
 
-@if(elearnitems)
-{ <th scope="column">
-    <tr>
-    <div class="hidden-items">
-        <p></p>
-        <p><label>Excersice Details</label></p>
-        <p><input id="Name" type="text" placeholder="Show Detaisl About the Activity" @bind="newActivity.Name" /></p>
-        
-        <button>Delete</button> 
-        <button>Edit</button>
+    @if (showActivityItems)
+    {
+        <th scope="column">
+        <tr>
+            <div class="hidden-items">
+                <p></p>
+                <p><label>Add Activity</label></p>
+                <p><input id="Name" type="text" placeholder="Activity Name" @bind="newActivity.Name" /></p>
+                <p><input id="activity" type="text" placeholder="Activity Type" @bind="newActivity.ActivityType" /></p>
+                <p><input id="description" type="text" placeholder="Description" @bind="newActivity.Description" /></p>
+                <p><input id="startdate" type="text" placeholder="Start Date" @bind="newActivity.StartDate" /></p>
+                <p><input id="enddate" type="text" placeholder="End Date" @bind="newActivity.EndDate" /></p>
+                <button @onclick="AddActivity">Save Activity</button>
+            </div>
+        </tr>
+        </th>
+    }
+
+        @if (elearnitems)
+        {
+        <th scope="column">
+        <tr>
+            <div class="hidden-items">
+                <p></p>
+                <p><label>Excersice Details</label></p>
+                <p><input id="Name" type="text" placeholder="Show Detaisl About the Activity" @bind="newActivity.Name" /></p>
+
+                <button>Delete</button>
+                <button>Edit</button>
                 <button>Upload Documents</button>
 
                 <link rel="stylesheet" href="styles.css" />
 
-                
+
                 <button @onclick="OpenPopup">Open Popup</button>
 
-                
-                    @if (showPopup)
-                    {
+
+                        @if (showPopup)
+                        {
                     <Popup />
-                    }
-    </div>
+                        }
+            </div>
         </tr>
         </th>
-    
-}
+
+        }  
 </table>
 
-@code {
-    private bool showActivityItems = false;
-    private ActivityModel newActivity = new ActivityModel();
-
-    private bool elearnitems=false;
-
-    private void showelearn()
-    {
-        elearnitems = true;
-    }
-
-    private void ShowActivity()
-    {
-        showActivityItems = true;
-    }
-
-    private async Task AddActivity()
-    {
-       // await ActivityController.AddActivity(newActivity);
-        // Add logic to save the newActivity to your local database or perform any other desired actions.
-        // For simplicity, let's just print the details for now.
-        Console.WriteLine($"New Activity Added: {newActivity.Name}, {newActivity.ActivityType}, {newActivity.Description}, {newActivity.StartDate}, {newActivity.EndDate}");
-
-        // Reset the form and hide the input fields
-        newActivity = new ActivityModel();
-        showActivityItems = false;
-    }
-    private bool showActivity = true;
-
-    private void ToggleTables()
-    {
-        showActivityItems = elearnitems;
-    }
-    private bool showPopup = false;
-
-    private void OpenPopup()
-    {
-        showPopup = true;
-    }
-}
