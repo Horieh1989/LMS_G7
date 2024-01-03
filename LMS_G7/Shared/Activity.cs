@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LMS_G7.Shared
 {
-    // ActivityModel.cs
+    
 
     public class ActivityModel
     {

@@ -1,19 +1,17 @@
-﻿<h3>Popup</h3>
-@page "/Popup.razor"
-@using LMS_G7.Shared
-<div class="popup-overlay" @onclick="ClosePopup">
-    <div class="popup-content">
-        <button class="close-button" @onclick="ClosePopup">X</button>
-        <h3>Popup Content Goes Here</h3>
-        <!-- Add your popup content here -->
+﻿<!-- Popup.razor -->
+<div class="overlay"  style="@(IsVisible ? "display: flex;" : "display: none;")">
+    <div class="popup"  style="background-color: lightgray; padding: 10px;">
+        <span class="close-btn" @onclick="ClosePopup">X</span>
+        <h2>Upload Document</h2>
+        <p />
+        <InputFile OnChange="HandleFileSelected" />        
+        <p />
+        <label for="textInput">Description</label>
+        <p>
+        <input type="text" id="textInput" @bind="EnteredText">
+        </p>
+        <br /><br />
+        <button @onclick="SubmitForm">Add</button>
+        <button @onclick="CancelForm">Cancel</button>
     </div>
 </div>
-
-@code {
-
-    private void ClosePopup()
-    {
-        
-    }
-
-}
