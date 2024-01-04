@@ -1,4 +1,4 @@
-﻿@page "/CourseView/courseId:int"
+﻿@page "/CourseView/{courseId}"
 <h3>CourseView</h3>
 
 <table class="table">
@@ -7,6 +7,7 @@
             <th scope="col">Course Id</th>
             <th scope="col">Course Name</th>
             <th scope="col">Course Start Date</th>
+            <th scope="col">Course End Date</th>
             <th scope="col">Course Description</th>
 
         </tr>
@@ -18,7 +19,9 @@
 
                 <td scope="row">@Course.Id</td>
                 <td scope="row">@Course.Name</td>
-                <td scope="row">@Course.StartDate.ToString("yyyy-mm-dd")</td>
+                <td scope="row">@Course.StartDate</td>
+                <td scope="row">@Course.EndDate</td>
+
                 <td scope="row">@Course.Description </td>
 
               

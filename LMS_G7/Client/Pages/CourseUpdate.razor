@@ -1,10 +1,11 @@
 ﻿@page "/CourseUpdate/{CourseId:int}"
+@using LMS_G7.Shared.Domain
 <h3>CourseUpdate</h3>
 
 
 <EditForm Model="@Course" OnValidSubmit="@HandleValidSubmit">
 
-    <DataAnnotationsValidator />
+   
 
     <table class="table">
         <thead>
@@ -17,21 +18,15 @@
         </thead>
         <tbody>
             <tr>
-                <td scope="row">@Course.CourseId</td>
-               @*  <td scope="row">
-                    <InputSelect id="Name" @bind-Value="Course.Name" class="form-control col-md-8">
-                        @foreach(var Name in Enum.GetValues(typeof(Name)))
-                    </InputSelect>
-
-                </td> *@
+                <td scope="row">@Course.Id</td>
+                <td scope="row">
+                    <InputText id="Name" @bind-Value="Course.Name" class="form-control col-md-8"></InputText>
+                </td>
                 <td scope="row">
                     <InputDate id="StartDate" @bind-Value="Course.StartDate" class="form-control col-md-8"></InputDate>
                 </td>
-
-
                 <td scope="row">
                     <InputText id="Description" @bind-Value="Course.Description" class="form-control col-md-8"></InputText>
-
                 </td>
             </tr>
         </tbody>
