@@ -30,4 +30,9 @@
     <ProjectReference Include="..\Shared\LMS_G7.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Component\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,26 @@
+﻿@page "/Activityview/{Id:int}"
+
+<h3>UserView</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Activity Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Documents</th>
+            <th scope="col">Module ID</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">@activity.Id</td>
+            <td scope="row">@activity.Name</td>
+            <td scope="row">@activity.StartDate</td>
+            <td scope="row">@activity.EndDate</td>
+            <td scope="row">@activity.ModuleId</td>
+        </tr>
+    </tbody>
+</table>
