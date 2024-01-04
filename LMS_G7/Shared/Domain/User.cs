@@ -25,7 +25,7 @@ namespace LMS_G7.Shared.Domain
 
         public Guid CourseId { get; set; }
 
-        //public Course Course { get; set; }
+        public Course Course { get; set; }
 
         //public ICollection<UserDocument> UserDocuments { get; set; }
 

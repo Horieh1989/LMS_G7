@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS_G7.Shared.Domain
+﻿namespace LMS_G7.Shared.Domain
 {
-    // ActivityModel.cs
 
     public class ActivityModel
     {
-        public string Name { get; set; }
-        public string ActivityType { get; set; }
-        public string Description { get; set; }
+        public Guid Id { get; set; }
+        public ActivityType Type { get; set; } = new ActivityType();
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public Guid ModuleId { get; set; }
+        public Module? Module { get; set; }
     }
 
 }

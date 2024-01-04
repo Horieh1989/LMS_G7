@@ -1,16 +1,11 @@
-﻿using LMS_G7.Client.Services;
+using LMS_G7.Client.Helpers;
+using LMS_G7.Client.Services;
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
-using static System.Net.WebRequestMethods;
-using System.Net.Http.Headers;
-using System.Text.Json;
-using System.Net.WebSockets;
-using System.Net;
-using LMS_G7.Client.Helpers;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class ModuleUpdate
+    public partial class ModuleDelete
     {
         [Inject]
         public NavigationManager NavigationManager { get; set; } = default!;
@@ -27,8 +22,6 @@ namespace LMS_G7.Client.Pages
 
         public string Message { get; set; } = string.Empty;
 
-        public bool LoadActivities { get; set; } = true;
-
         protected override async Task OnInitializedAsync()
         {
             if (ModuleId == null)
@@ -38,7 +31,7 @@ namespace LMS_G7.Client.Pages
             }
 
             Module = await GenericDataService.GetAsync<Module>(UriHelper.GetModuleUri(ModuleId.Value)) ?? Module;
-            LoadActivities = true;
+
             if (Module == null)
             {
                 ErrorMessage = "Module not found";
@@ -46,29 +39,6 @@ namespace LMS_G7.Client.Pages
             }
 
             await base.OnInitializedAsync();
-        }
-
-        private async Task HandleValidSubmit()
-        {
-            if (Module == null)
-            {
-                return;
-            }
-            try
-            {
-                if (await GenericDataService.UpdateAsync(UriHelper.GetModuleUri(Module.Id), Module))
-                {
-                    Message = "Module saved";
-                }
-                else
-                {
-                    ErrorMessage = "Could not update module";
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorMessage = $"{ex.Message} {ex.HResult}";
-            }
         }
 
         private async Task DeleteModule()

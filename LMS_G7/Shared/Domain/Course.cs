@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection.Metadata;
-using System.Reflection;
 
 namespace LMS_G7.Shared.Domain
 {
@@ -16,20 +14,25 @@ namespace LMS_G7.Shared.Domain
     }
     public class Course
     {
-        public int CourseId { get; set; }
+        public Guid CourseId { get; set; }
+
         //[DisplayName("course name")]
         //[StringLength(20)]
-        public Name Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
         //Fk
-        public int ModuleId { get; set; }
+
+        /*public Guid ModuleId { get; set; }*/
+
         [DisplayName("Time of starting ")]
         public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public ICollection<Module>? Modules { get; set; }
+        public ICollection<User>? Users { get; set; }
 
-        public ICollection<Module> Modules { get; set; }
-        //public ICollection<User> Users { get; set; }
-        public ICollection<Document> Documents { get; set; }
+
+        //public ICollection<Document> Documents { get; set; }
 
     }
 
