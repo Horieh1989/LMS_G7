@@ -24,7 +24,7 @@
                 <label>Lectures</label>
             </td>
             <td>
-                <button name="lecture">Assign</button>
+                <button name="lecture" @onclick="showLecture">Assign</button>
             </td>
         </tr>
 
@@ -33,7 +33,7 @@
                 <label>Practice Sessions</label>
             </td>
             <td>
-                <button name="sessions">Assign</button>
+                <button name="sessions" @onclick="showSession">Assign</button>
             </td>
         </tr>
      
@@ -42,7 +42,7 @@
                 <label>Assignments</label>
             </td>
             <td>
-                <button name="asssignments">Assign</button>
+                <button name="asssignments" @onclick="showAssign">Assign</button>
             </td>
         </tr>
 
@@ -75,7 +75,7 @@
         {
             <tr>
                 <td>
-                    <label>Exercise Details</label>
+                    <label>E-Learning</label>
                 </td>
                 <td>
                     <!-- Hidden fields specific to elearnitems -->
@@ -92,6 +92,72 @@
                 </td>                
             </tr>
             
+        }
+        @if (lectureitems)
+        {
+            <tr>
+                <td>
+                    <label>Lectures</label>
+                </td>
+                <td>
+                    <!-- Hidden fields specific to elearnitems -->
+                    <p><input id="Name" type="text" placeholder="Show Details About the Activity" @bind="newActivity.Name" /></p>
+
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="align-content: center;">
+                    <button @onclick="OpenPopup">Upload Documents</button>
+                    <Popup IsVisible="@showPopup" IsVisibleChanged="HandlePopupVisibilityChange" />
+                </td>
+            </tr>
+
+        }
+        @if (practiceitems)
+        {
+            <tr>
+                <td>
+                    <label>Practice sessions</label>
+                </td>
+                <td>
+                    <!-- Hidden fields specific to elearnitems -->
+                    <p><input id="Name" type="text" placeholder="Show Details About the Activity" @bind="newActivity.Name" /></p>
+
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="align-content: center;">
+                    <button @onclick="OpenPopup">Upload Documents</button>
+                    <Popup IsVisible="@showPopup" IsVisibleChanged="HandlePopupVisibilityChange" />
+                </td>
+            </tr>
+
+        }
+        @if (assignitems)
+        {
+            <tr>
+                <td>
+                    <label>Assignments</label>
+                </td>
+                <td>
+                    <!-- Hidden fields specific to elearnitems -->
+                    <p><input id="Name" type="text" placeholder="Show Details About the Activity" @bind="newActivity.Name" /></p>
+
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td style="align-content: center;">
+                    <button @onclick="OpenPopup">Upload Documents</button>
+                    <Popup IsVisible="@showPopup" IsVisibleChanged="HandlePopupVisibilityChange" />
+                </td>
+            </tr>
+
         }
     </tbody>
 </table>
