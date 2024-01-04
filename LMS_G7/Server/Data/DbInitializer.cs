@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Bogus;
+﻿using Bogus;
 using LMS_G7.Shared.Domain;
 
 namespace LMS_G7.Server.Data
@@ -62,7 +59,7 @@ namespace LMS_G7.Server.Data
                         Description = Faker.Lorem.Sentence(),
                         StartDate = Faker.Date.Future(),
                         EndDate = Faker.Date.Future(),
-                        CourseId = course.CourseId,
+                        CourseId = course.Id,
                     });
                 }
             }
@@ -73,17 +70,17 @@ namespace LMS_G7.Server.Data
 
         private static void InitializeActivityTypes(ApplicationDbContext context)
         {
-            if (context.ActivityTypes.Any())
+            if (context.Activity.Any())
             {
                 return; // Database has been seeded
             }
 
             var activityTypes = new List<ActivityType>
             {
-                new ActivityType { Name = "E-Learning" },
-                new ActivityType { Name = "Lecture" },
-                new ActivityType { Name = "Practice session" },
-                new ActivityType { Name = "Assignment" },
+                new Activity { Name = "E-Learning" },
+                new Activity{ Name = "Lecture" },
+                new Activity { Name = "Practice session" },
+                new Activity { Name = "Assignment" },
             };
 
             context.ActivityTypes.AddRange(activityTypes);
