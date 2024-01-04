@@ -73,7 +73,7 @@ namespace LMS_G7.Client.Pages
         {
             showPopup = true;
             showActivityItems = false;
-            elearnitems = false;
+            elearnitems = true;
             lectureitems = false;
             practiceitems = false;
             assignitems = false;
