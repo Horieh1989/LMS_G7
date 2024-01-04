@@ -14,8 +14,8 @@ namespace LMS_G7.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
-        public DbSet<ActivityModel> Activities { get; set; }
-       // public IEnumerable<ActivityModel> Activities { get; internal set; }
-       
+        public DbSet<Activity> Activities { get; set; }
+        // public IEnumerable<ActivityModel> Activities { get; internal set; }
+
     }
 }

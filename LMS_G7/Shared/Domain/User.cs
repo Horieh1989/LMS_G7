@@ -22,7 +22,7 @@ namespace LMS_G7.Shared.Domain
         public string FullName => $"{FirstName} {LastName}";
         public string Email { get; set; }
 
-        public UserRole UserRole { get; set; }
+        //public UserRole UserRole { get; set; }
 
         //Foreign Key
         public int CourseId { get; set; }

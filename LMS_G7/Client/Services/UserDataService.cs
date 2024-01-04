@@ -15,7 +15,6 @@ namespace LMS_G7.Client.Services
                 FirstName = "FirstName1",
                 LastName = "LastName1",
                 Email = "Email1",
-                UserRole = UserRole.student,
                 CourseId = 1,
             });
             Users.Add(new User()
@@ -24,7 +23,6 @@ namespace LMS_G7.Client.Services
                 FirstName = "FirstName2",
                 LastName = "LastName2",
                 Email = "Email2",
-                UserRole = UserRole.student,
                 CourseId = 1,
             });
             Users.Add(new User()
@@ -33,7 +31,6 @@ namespace LMS_G7.Client.Services
                 FirstName = "FirstName3",
                 LastName = "LastName3",
                 Email = "Email3",
-                UserRole = UserRole.student,
                 CourseId = 1,
             });
         }

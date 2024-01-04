@@ -10,10 +10,10 @@ namespace LMS_G7.Client.Pages
         public NavigationManager NavigationManager { get; set; } = default!;
 
         [Inject]
-        public IGenericDataService GenericDataService { get; set; } = default!;
+        public IModuleDataService ModuleDataService { get; set; } = default!;
 
         [Parameter]
-        public Guid? CourseId { get; set; }
+        public int CourseId { get; set; }
 
         public Module Module { get; set; } = new Module();
 
@@ -28,7 +28,7 @@ namespace LMS_G7.Client.Pages
         {
             try
             {
-                Module.CourseId = CourseId!.Value;
+                Module.CourseId = CourseId;
                 if (await GenericDataService.AddAsync(UriHelper.GetModulesUri(), Module))
                 {
                     NavigationManager.NavigateTo("/");
