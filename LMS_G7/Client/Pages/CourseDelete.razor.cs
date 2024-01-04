@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class CourseDelet
+    public partial class CourseDelete
     {
         [Inject]
         public ICourseDataService CourseDataService { get; set; }
