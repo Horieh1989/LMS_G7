@@ -1,9 +1,6 @@
 ﻿@ExtraCaption
 <h3>List of courses </h3>
 
-
-
-
 <table class="table">
     <thead>
         <tr>
@@ -13,7 +10,7 @@
             <th scope="col">Course End Date</th>
             <th scope="col">Course Description</th>
             <th scope="col">View</th>
-            <th scope="col">Delet</th>
+            <th scope="col">Delete</th>
             <th scope="col">Update</th>
             <th scope="col">Add</th>
         </tr>
@@ -32,7 +29,7 @@
               
                <td scope="row"><a href="@($"DeviceDelete/{course.Id}")" class="btn btn-outline-primary">Delete</a></td>@* reference page ro miarim ba id devive age bekhaim *@
                <td scope="row"><a href="@($"DeviceUpdate/{course.Id}")" class="btn btn-outline-primary">Update</a></td>@* reference page ro miarim ba id devive age bekhaim *@
-               <td scope="row"><a href="@($"DeviceAdd/{course.Id}")" class="btn btn-outline-primary">Edit</a></td>@* reference page ro miarim ba id devive age bekhaim *@ 
+               <td scope="row"><a href="@($"DeviceAdd/{course.Id}")" class="btn btn-outline-primary">Add</a></td>@* reference page ro miarim ba id devive age bekhaim *@ 
             </tr>
 
         }

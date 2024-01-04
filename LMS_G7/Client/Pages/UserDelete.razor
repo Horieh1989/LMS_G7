@@ -1,0 +1,26 @@
+﻿@page "/userdelete/{Id:int}"
+
+<h3>UserDelete</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Course Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">@User.Id</td>
+            <td scope="row">@User.FirstName</td>
+            <td scope="row">@User.LastName</td>
+            <td scope="row">@User.Email</td>
+            <td scope="row">@User.CourseId</td>
+        </tr>
+    </tbody>
+</table>
+<a href="@($"/listofusers")" class="btn btn-outline-primary">Back to User list</a>
+<a class="btn btn-outline-primary" @onclick="() => Delete(User.Id)">Delete</a>
