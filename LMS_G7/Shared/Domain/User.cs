@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#nullable disable
 namespace LMS_G7.Shared.Domain
 {
     public enum UserRole
@@ -14,20 +15,21 @@ namespace LMS_G7.Shared.Domain
 
     public class User
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
         public string FullName => $"{FirstName} {LastName}";
         public string Email { get; set; }
 
-        public UserRole UserRole { get; set; }
+        //public UserRole UserRole { get; set; }
 
-        public Guid CourseId { get; set; }
+        //Foreign Key
+        public int CourseId { get; set; }
 
-        //public Course Course { get; set; }
-
-        //public ICollection<UserDocument> UserDocuments { get; set; }
+        //Navigation Properties
+        public Course Course { get; set; }
+        public ICollection<Document> Documents { get; set; } = new List<Document>();
 
     }
 }

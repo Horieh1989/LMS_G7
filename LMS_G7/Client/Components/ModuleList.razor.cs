@@ -1,23 +1,24 @@
-﻿using LMS_G7.Client.Services;
+﻿using LMS_G7.Client.Pages;
+using LMS_G7.Client.Services;
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Components
 {
-    public partial class UserList
+    public partial class ModuleList
     {
         [Parameter]
         public string ExtraCaption { get; set; } = string.Empty;
 
         [Inject]
-        public IUserDataService UserDataService { get; set; }
+        public IModuleDataService ModuleDataService { get; set; }
 
-        public List<User> UserLst { get; set; } = new List<User>();
+        public List<Module> ModuleLst { get; set; } = new List<Module>();
+
         protected override void OnInitialized()
         {
-            UserLst = UserDataService.GetUsers();
+            ModuleLst = ModuleDataService.GetModules();
             base.OnInitialized();
         }
-
     }
 }
