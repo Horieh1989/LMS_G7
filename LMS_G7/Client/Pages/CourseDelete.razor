@@ -1,8 +1,6 @@
-﻿@page "/CourseDelete/{CourseId:int}"
+﻿@page "/CourseDelete/{Id:int}"
 
 <h3>Course Delete</h3>
-
-
 
 <table class="table">
     <thead>
@@ -23,4 +21,4 @@
     </tbody>
 </table>
 <a href="@($"CourseLst")" class="btn btn-outline-primary">Back to Course list</a>
-<a class="btn btn-outline-primary" @onclick="() => Delet(CourseId)">Delete</a>
+<a class="btn btn-outline-primary" @onclick="() => Delete(Id)">Delete</a>

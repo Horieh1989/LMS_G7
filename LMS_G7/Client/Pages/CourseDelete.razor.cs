@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class CourseDelet
+    public partial class CourseDelete
     {
         [Inject]
         public ICourseDataService CourseDataService { get; set; }
@@ -13,18 +13,15 @@ namespace LMS_G7.Client.Pages
 
         [Parameter]
 
-        public int CourseId { get; set; }
+        public int Id { get; set; }
 
         public Course Course { get; set; } = new Course();
 
         protected override void OnInitialized()
         {
-
-           
-
-           base.OnInitialized();
+            base.OnInitialized();
         }
-        protected void Delet(int CourseId)
+        protected void Delete(int CourseId)
         {
             CourseDataService.DeleteCourse(CourseId);//why we dont use directly instead of delet ,deletdevice
             NavigationManager.NavigateTo($"CourseLst");

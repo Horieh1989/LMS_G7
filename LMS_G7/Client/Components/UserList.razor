@@ -9,6 +9,7 @@
             <th scope="col">Email</th>
             <th scope="col">Course Id</th>
             <th scope="col">View</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 <td scope="row">@user.Email</td>
                 <td scope="row">@user.CourseId</td>
                 <td scope="row"><a href="@($"userview/{user.Id}")" class="btn btn-outline-primary">View</a></td>
+                <td scope="row"><a href="@($"userdelete/{user.Id}")" class="btn btn-outline-primary">Delete</a></td>
          </tr>   
         }
     </tbody>

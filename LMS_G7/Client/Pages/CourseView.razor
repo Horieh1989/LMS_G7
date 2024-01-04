@@ -1,4 +1,4 @@
-﻿@page "/CourseView/{courseId}"
+﻿@page "/CourseView/{courseId:int}"
 <h3>CourseView</h3>
 
 <table class="table">
@@ -13,23 +13,15 @@
         </tr>
     </thead>
     <tbody>
-       
-        
             <tr>
-
                 <td scope="row">@Course.Id</td>
                 <td scope="row">@Course.Name</td>
                 <td scope="row">@Course.StartDate</td>
                 <td scope="row">@Course.EndDate</td>
-
                 <td scope="row">@Course.Description </td>
-
-              
-            </tr>
+             </tr>
         
     </tbody>
-
-
 
 </table>
 <a href="@($"CourseLst")class=" btn btn-outline-primary"> Go back to the main List </a>
