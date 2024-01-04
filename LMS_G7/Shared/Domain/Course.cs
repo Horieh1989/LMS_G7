@@ -22,8 +22,12 @@ namespace LMS_G7.Shared.Domain
         public string Description { get; set; }
 
         [DisplayName("Time of starting ")]
+<<<<<<< HEAD
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+=======
+
+>>>>>>> b38e631aff37ae98f377b7f6400398d7687e8aca
 
         //Navigation Properties
         public ICollection<User> Users { get; set; } = new List<User>();
