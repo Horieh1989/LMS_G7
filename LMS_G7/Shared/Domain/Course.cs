@@ -21,11 +21,12 @@ namespace LMS_G7.Shared.Domain
         //[StringLength(20)]
         public Name Name { get; set; }
         public string Description { get; set; }
+        public DateTime StartDate { get; set; }= DateTime.Now;
 
         //Fk
         public int ModuleId { get; set; }
         [DisplayName("Time of starting ")]
-        public DateTime StartDate { get; set; }
+      
 
         public ICollection<Module> Modules { get; set; }
         //public ICollection<User> Users { get; set; }

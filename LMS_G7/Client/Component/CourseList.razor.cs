@@ -2,8 +2,8 @@
 using global::LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
-namespace LMS_G7.Client.Component
-{
+
+
 	namespace LMS_G7.Client.Component
 	{
 		public partial class CourseList
@@ -24,4 +24,4 @@ namespace LMS_G7.Client.Component
 	}
 
 
-}
+

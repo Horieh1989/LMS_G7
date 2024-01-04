@@ -12,15 +12,18 @@ namespace LMS_G7.Client.Pages
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
-        public Course course { get; set; } = new Course();
+        public Course Course { get; set; } = new Course();
         protected override void OnInitialized()
         {
+          
             base.OnInitialized();
+
+
         }
 
         protected async Task HandleValidSubmit()
         {
-            CourseDataService.AddCourse(course);
+            CourseDataService.AddCourse(Course);
             NavigationManager.NavigateTo($"/CourseLst");
         }
     }
