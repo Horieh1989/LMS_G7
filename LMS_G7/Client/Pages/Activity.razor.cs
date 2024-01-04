@@ -1,11 +1,12 @@
 ﻿using LMS_G7.Shared;
+using LMS_G7.Shared.Domain;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class Activity
+    public partial class ActivityLst
     {
         private bool showActivityItems = false;
-        private ActivityModel newActivity = new ActivityModel();
+        private Activity newActivity = new Activity();
 
         private bool elearnitems = false;
         private bool lectureitems = false;
@@ -57,7 +58,7 @@ namespace LMS_G7.Client.Pages
             assignitems = false;
         }
 
-        private void AddActivity()
+        public void AddActivity()
         {
             // await ActivityController.AddActivity(newActivity);
             // Add logic to save the newActivity to your local database or perform any other desired actions.
@@ -65,9 +66,9 @@ namespace LMS_G7.Client.Pages
             Console.WriteLine($"New Activity Added: {newActivity.Name}, {newActivity.ActivityType}, {newActivity.Description}, {newActivity.StartDate}, {newActivity.EndDate}");
 
             // Reset the form and hide the input fields
-            newActivity = new ActivityModel();
+            newActivity = new Activity();
             showActivityItems = false;
-        }       
+        }
         private void OpenPopup()
         {
             showPopup = true;
@@ -85,5 +86,5 @@ namespace LMS_G7.Client.Pages
         }
 
     }
-   
+
 }

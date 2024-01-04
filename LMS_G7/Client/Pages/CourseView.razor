@@ -1,0 +1,33 @@
+﻿@page "/CourseView/courseId:int"
+<h3>CourseView</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Course Id</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Course Start Date</th>
+            <th scope="col">Course Description</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       
+        
+            <tr>
+
+                <td scope="row">@Course.Id</td>
+                <td scope="row">@Course.Name</td>
+                <td scope="row">@Course.StartDate.ToString("yyyy-mm-dd")</td>
+                <td scope="row">@Course.Description </td>
+
+              
+            </tr>
+        
+    </tbody>
+
+
+
+</table>
+<a href="@($"CourseLst")class=" btn btn-outline-primary"> Go back to the main List </a>
+
