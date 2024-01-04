@@ -1,4 +1,5 @@
 ﻿using LMS_G7.Shared;
+using LMS_G7.Shared.Domain;
 
 namespace LMS_G7.Client.Pages
 {
