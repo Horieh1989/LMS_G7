@@ -1,10 +1,8 @@
-﻿@page "/CourseDelet/{CourseId}"
-@using LMS_G7.Shared.Domain
-
+﻿@page "/CourseDelet/{CourseId:int}"
 
 <h3>Course Delete</h3>
 
-<h3>Delete Course</h3>
+
 
 <table class="table">
     <thead>
@@ -19,9 +17,10 @@
         <tr>
             <td scope="row">@Course.Id</td>
             <td scope="row">@Course.Name</td>
-            <td scope="row">@Course.StartDate</td>
+            <td scope="row">@Course.StartDate.ToString("yyyy-MM-dd")</td>
             <td scope="row">@Course.Description</td>
         </tr>
     </tbody>
 </table>
 <a href="@($"CourseLst")" class="btn btn-outline-primary">Back to Course list</a>
+<a class="btn btn-outline-primary" @onclick="() => Delet(CourseId)">Delete</a>

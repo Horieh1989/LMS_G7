@@ -13,9 +13,9 @@ namespace LMS_G7.Client.Services
             //CourseList.Add(new Course() { Id = 2, Name = Name.Systemdeveloper, Description = "This course..", StartDate = DateTime.Today });
             //CourseList.Add(new Course() { Id = 3, Name = Name.SupportTeknik, Description = "This course..", StartDate = DateTime.Today });
 
-            CourseList.Add(new Course() { Id = 1, Name = "CourseName1", Description = "This course..", StartDate = DateTime.Today });
-            CourseList.Add(new Course() { Id = 2, Name = "CourseName2", Description = "This course..", StartDate = DateTime.Today });
-            CourseList.Add(new Course() { Id = 3, Name = "CourseName3", Description = "This course..", StartDate = DateTime.Today });
+            CourseList.Add(new Course() { Id = 1, Name = "DotNetProgramming", Description = "This course..", StartDate = DateTime.Today,EndDate=DateTime.Now });
+            CourseList.Add(new Course() { Id = 2, Name = "SystemDeveloper", Description = "This course..", StartDate = DateTime.Today ,EndDate = DateTime.Now });
+            CourseList.Add(new Course() { Id = 3, Name = "SupportTeknik", Description = "This course..", StartDate = DateTime.Today , EndDate = DateTime.Now });
 
 
 

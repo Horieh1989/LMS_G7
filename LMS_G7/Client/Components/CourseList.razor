@@ -10,8 +10,12 @@
             <th scope="col">Course Id</th>
             <th scope="col">Course Name</th>
             <th scope="col">Course Start Date</th>
+            <th scope="col">Course End Date</th>
             <th scope="col">Course Description</th>
             <th scope="col">View</th>
+            <th scope="col">Delet</th>
+            <th scope="col">Update</th>
+            <th scope="col">Add</th>
         </tr>
     </thead>
     <tbody>
@@ -22,12 +26,13 @@
                 <td scope="row">@course.Id</td>
                 <td scope="row">@course.Name</td>
                 <td scope="row">@course.StartDate</td>
+                <td scope="row">@course.EndDate</td>
                 <td scope="row">@course.Description </td>
                 <td scope="row"><a href="@($"courseview/{course.Id}")" class="btn btn-outline-primary">View</a></td>
-               @*  <td scope="row"><a href="@($"DeviceView/{Course.DeviceId}")" class="btn btn-outline-primary">View </a> </td>@* reference page ro miarim ba id devive age bekhaim *@
-               @*@ <td scope="row"><a href="@($"DeviceDelete/{device.DeviceId}")" class="btn btn-outline-primary">Delete</a></td>@* reference page ro miarim ba id devive age bekhaim *@
-               @*d scope="row"><a href="@($"DeviceUpdate/{device.DeviceId}")" class="btn btn-outline-primary">Update</a></td>@* reference page ro miarim ba id devive age bekhaim *@
-               @*d scope="row"><a href="@($"DeviceAdd/{device.DeviceId}")" class="btn btn-outline-primary">Edit</a></td>@* reference page ro miarim ba id devive age bekhaim *@ 
+              
+               <td scope="row"><a href="@($"DeviceDelete/{course.Id}")" class="btn btn-outline-primary">Delete</a></td>@* reference page ro miarim ba id devive age bekhaim *@
+               <td scope="row"><a href="@($"DeviceUpdate/{course.Id}")" class="btn btn-outline-primary">Update</a></td>@* reference page ro miarim ba id devive age bekhaim *@
+               <td scope="row"><a href="@($"DeviceAdd/{course.Id}")" class="btn btn-outline-primary">Edit</a></td>@* reference page ro miarim ba id devive age bekhaim *@ 
             </tr>
 
         }
