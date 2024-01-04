@@ -7,41 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Remove="Components\**" />
-    <Content Remove="Components\**" />
-    <EmbeddedResource Remove="Components\**" />
-    <None Remove="Components\**" />
-=======
-    <Compile Remove="Component\**" />
-    <Content Remove="Component\**" />
-    <EmbeddedResource Remove="Component\**" />
-    <None Remove="Component\**" />
->>>>>>> 4c0f4fb73f1ccbfb055e35e875d099de78955187
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Pages\ModuleAdd.razor.cs" />
-    <Compile Remove="Pages\ModuleUpdate.razor.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Pages\ModuleAdd.razor" />
-    <Content Remove="Pages\ModuleUpdate.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
-    <None Include="Components\CourseList.razor" />
-    <None Include="Components\ModuleList.razor" />
-    <None Include="Components\UserList.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.13" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
   </ItemGroup>
 
