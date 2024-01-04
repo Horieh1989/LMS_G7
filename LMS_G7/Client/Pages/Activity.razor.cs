@@ -74,6 +74,8 @@ namespace LMS_G7.Client.Pages
             showActivityItems = false;
             elearnitems = false;
             lectureitems = false;
+            practiceitems = false;
+            assignitems = false;
         }
                     
         private void HandlePopupVisibilityChange(bool isVisible)
