@@ -15,13 +15,14 @@ namespace LMS_G7.Client.Pages
         public Course Course { get; set; } = new Course();
         protected override void OnInitialized()
         {
-          
+           
+           
             base.OnInitialized();
 
 
         }
 
-        protected async Task HandleValidSubmit()
+        protected void HandleValidSubmit()// I should ask this part?
         {
             CourseDataService.AddCourse(Course);
             NavigationManager.NavigateTo($"/CourseLst");
