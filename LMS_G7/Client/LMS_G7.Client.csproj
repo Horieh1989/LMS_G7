@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Activity.razor.cs" />
+    <Compile Remove="Pages\Activityview.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
     <Compile Remove="Pages\ModuleDelete.razor.cs" />
     <Compile Remove="Pages\ModuleDetails.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Activity.razor" />
+    <Content Remove="Pages\Activityview.razor" />
     <Content Remove="Pages\ModuleAdd.razor" />
     <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />
