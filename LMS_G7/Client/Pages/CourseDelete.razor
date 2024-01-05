@@ -8,6 +8,7 @@
             <th scope="col">Course Id</th>
             <th scope="col">Name</th>
             <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
             <th scope="col">Description</th>
         </tr>
     </thead>
@@ -16,9 +17,10 @@
             <td scope="row">@Course.Id</td>
             <td scope="row">@Course.Name</td>
             <td scope="row">@Course.StartDate.ToString("yyyy-MM-dd")</td>
+            <td scope="row">@Course.EndDate)</td>
             <td scope="row">@Course.Description</td>
         </tr>
     </tbody>
 </table>
 <a href="@($"CourseLst")" class="btn btn-outline-primary">Back to Course list</a>
-<a class="btn btn-outline-primary" @onclick="() => Delete(Id)">Delete</a>
+<a class="btn btn-outline-primary" @onclick="() => Delete(Course.Id)">Delete</a>

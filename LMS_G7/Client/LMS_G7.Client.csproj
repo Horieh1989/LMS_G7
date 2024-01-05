@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Components\CourseList.razor.cs" />
     <Compile Remove="Component\CourseList.razor.cs" />
-    <Compile Remove="Pages\CourseAdd.razor.cs" />
     <Compile Remove="Pages\CourseDelet.razor.cs" />
     <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
@@ -18,12 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Components\CourseList.razor" />
-    <Content Remove="Component\CourseList.razor" />
-    <Content Remove="Pages\CourseAdd.razor" />
-    <Content Remove="Pages\CourseDelet.razor" />
-    <Content Remove="Pages\CourseLst.razor" />
-    <Content Remove="Pages\CourseUpdate2.razor" />
     <Content Remove="Pages\ModuleAdd.razor" />
     <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />
