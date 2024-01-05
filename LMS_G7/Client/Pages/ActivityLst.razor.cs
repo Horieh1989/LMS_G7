@@ -5,8 +5,8 @@ namespace LMS_G7.Client.Pages
 {
     public partial class ActivityLst
     {
-        public bool showActivityItems = false;
-        public Activity newActivity { get; set; } = new Activity();
+        private bool showActivityItems = false;
+        private LMS_G7.Shared.Domain.Activity newActivity = new LMS_G7.Shared.Domain.Activity();
 
         public bool elearnitems = false;
         public bool lectureitems = false;
@@ -67,7 +67,7 @@ namespace LMS_G7.Client.Pages
             Console.WriteLine($"New Activity Added: {newActivity.Name}, {newActivity.ActivityType}, {newActivity.Description}, {newActivity.StartDate}, {newActivity.EndDate}");
 
             // Reset the form and hide the input fields
-
+            newActivity = new Activity();
             showActivityItems = false;
         }
         private void OpenPopup()

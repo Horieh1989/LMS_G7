@@ -11,7 +11,7 @@ namespace LMS_G7.Server.Data
         {
             InitializeCourses(context);
             InitializeModules(context);
-            InitializeActivityTypes(context);
+            //InitializeActivityTypes(context);
             InitializeActivityModels(context);
             InitializeUsers(context);
         }
@@ -29,7 +29,7 @@ namespace LMS_G7.Server.Data
             {
                 courses.Add(new Course
                 {
-                    Name = Faker.Commerce.ProductName(),
+                   // Name = Faker.Commerce.ProductName(),
                     Description = Faker.Lorem.Sentence(),
                     StartDate = Faker.Date.Future(),
                     EndDate = Faker.Date.Future(),
@@ -68,51 +68,51 @@ namespace LMS_G7.Server.Data
             context.SaveChanges();
         }
 
-        private static void InitializeActivityTypes(ApplicationDbContext context)
-        {
-            if (context.Activity.Any())
-            {
-                return; // Database has been seeded
-            }
+        //private static void InitializeActivityTypes(ApplicationDbContext context)
+        //{
+        //    if (context.ActivityTypes.Any())
+        //    {
+        //        return; // Database has been seeded
+        //    }
 
-            var activityTypes = new List<ActivityType>
-            {
-                new Activity { Name = "E-Learning" },
-                new Activity{ Name = "Lecture" },
-                new Activity { Name = "Practice session" },
-                new Activity { Name = "Assignment" },
-            };
+        //    var activityTypes = new List<ActivityType>
+        //    {
+        //        new ActivityType { Name = "E-Learning" },
+        //        new ActivityType { Name = "Lecture" },
+        //        new ActivityType { Name = "Practice session" },
+        //        new ActivityType { Name = "Assignment" },
+        //    };
 
-            context.ActivityTypes.AddRange(activityTypes);
-            context.SaveChanges();
-        }
+        //    context.ActivityTypes.AddRange(activityTypes);
+        //    context.SaveChanges();
+        //}
 
         private static void InitializeActivityModels(ApplicationDbContext context)
         {
-            if (context.ActivityModels.Any())
+            if (context.Activities.Any())
             {
                 return; // Database has been seeded
             }
 
-            var activityModels = new List<ActivityModel>();
+            var activityModels = new List<Activity>();
 
             foreach (var module in context.Modules.ToList())
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    activityModels.Add(new ActivityModel
+                    activityModels.Add(new Activity
                     {
                         Name = Faker.Lorem.Word(),
                         Description = Faker.Lorem.Sentence(),
                         StartDate = Faker.Date.Future(),
                         EndDate = Faker.Date.Future(),
-                        ModuleId = module.ModuleId,
-                        Type = context.ActivityTypes.ToList().Random(),
+                        ModuleId = module.Id,
+                       // ActivityType = context.Activities.ToList().Random(),
                     });
                 }
             }
 
-            context.ActivityModels.AddRange(activityModels);
+            context.Activities.AddRange(activityModels);
             context.SaveChanges();
         }
 
@@ -134,7 +134,7 @@ namespace LMS_G7.Server.Data
                         FirstName = Faker.Name.FirstName(),
                         LastName = Faker.Name.LastName(),
                         Email = Faker.Internet.Email(),
-                        CourseId = course.CourseId,
+                        CourseId = course.Id,
                     });
                 }
             }
