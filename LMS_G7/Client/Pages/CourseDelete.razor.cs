@@ -13,18 +13,19 @@ namespace LMS_G7.Client.Pages
 
         [Parameter]
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public Course Course { get; set; } = new Course();
 
         protected override void OnInitialized()
-        {
-            base.OnInitialized();
+        {   
+            Course=CourseDataService.GetCourse(Id.Value);
+
         }
-        protected void Delete(int CourseId)
+        protected void Delete(int Id)
         {
-            CourseDataService.DeleteCourse(CourseId);//why we dont use directly instead of delet ,deletdevice
-            NavigationManager.NavigateTo($"CourseLst");
+            CourseDataService.DeleteCourse(Course.Id);
+            NavigationManager.NavigateTo("/CourseLst");
         }
 
 

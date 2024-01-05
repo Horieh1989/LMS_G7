@@ -15,20 +15,21 @@ namespace LMS_G7.Client.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
-        public int? CourseId { get; set; }
+        public int? Id { get; set; }
 
         public Course Course { get; set; } = new Course();
 
         protected override void OnInitialized()
         {
-            if (CourseId.HasValue)
+            if (Id.HasValue)
             {
-                Course = CourseDataService.GetCourse(CourseId.Value);
+                Course = CourseDataService.GetCourse(Id.Value);
             }
 
             base.OnInitialized();
         }
 
+        
         protected async Task HandleValidSubmit()
         {
             CourseDataService.UpdateCourse(Course);
