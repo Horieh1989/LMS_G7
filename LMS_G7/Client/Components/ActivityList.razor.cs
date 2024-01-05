@@ -10,8 +10,8 @@ namespace LMS_G7.Client.Components
             [Parameter]
             public string ExtraCaption { get; set; } = string.Empty;
 
-            [Inject]
-            public IActivityDataService activityDataService { get; set; }
+            
+            public IActivityDataService activityDataService = new ActivityDataService();
 
             public List<Activity> ActivityLst { get; set; } = new List<Activity>();
             protected override void OnInitialized()
