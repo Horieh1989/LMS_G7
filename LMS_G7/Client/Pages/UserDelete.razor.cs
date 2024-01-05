@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Pages
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Teacher")]
     public partial class UserDelete
     {
         [Inject]

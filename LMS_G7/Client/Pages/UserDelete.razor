@@ -1,5 +1,6 @@
 ﻿@page "/userdelete/{Id:int}"
 
+@attribute [Authorize(Roles ="Admin, Teacher")] 
 <h3>UserDelete</h3>
 
 <table class="table">
@@ -23,4 +24,9 @@
     </tbody>
 </table>
 <a href="@($"/listofusers")" class="btn btn-outline-primary">Back to User list</a>
-<a class="btn btn-outline-primary" @onclick="() => Delete(User.Id)">Delete</a>
+
+<AuthorizeView Roles="Admin, Teacher">
+    <Authorized>
+        <a class="btn btn-outline-primary" @onclick="() => Delete(User.Id)">Delete</a>
+    </Authorized>
+</AuthorizeView>
