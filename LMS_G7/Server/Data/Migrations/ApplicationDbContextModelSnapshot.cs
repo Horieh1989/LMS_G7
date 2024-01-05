@@ -260,7 +260,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("ModuleId");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activities", (string)null);
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.ActivityType", b =>
@@ -276,7 +276,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ActivityType");
+                    b.ToTable("ActivityType", (string)null);
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Course", b =>
@@ -301,7 +301,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Course", (string)null);
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Document", b =>
@@ -343,7 +343,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Document", (string)null);
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Module", b =>
@@ -375,7 +375,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Modules");
+                    b.ToTable("Module", (string)null);
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.User", b =>
@@ -402,7 +402,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
