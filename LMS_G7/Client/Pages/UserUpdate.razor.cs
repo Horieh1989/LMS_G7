@@ -1,9 +1,11 @@
 ﻿using LMS_G7.Client.Services;
 using LMS_G7.Shared.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Pages
 {
+    [Authorize(Roles = "Admin, Teacher")]
     public partial class UserUpdate
     {
         [Parameter]

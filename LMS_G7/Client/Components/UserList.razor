@@ -9,10 +9,14 @@
             <th scope="col">Email</th>
             <th scope="col">Course Id</th>
             <th scope="col">View</th>
-            <th scope="col">Update</th>
             <AuthorizeView Roles="Admin, Teacher">
                 <Authorized>
-            <th scope="col">Delete</th>
+                    <th scope="col">Update</th>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Admin, Teacher">
+                <Authorized>
+                    <th scope="col">Delete</th>
                 </Authorized>
             </AuthorizeView>
         </tr>
@@ -26,11 +30,15 @@
                 <td scope="row">@user.LastName</td>
                 <td scope="row">@user.Email</td>
                 <td scope="row">@user.CourseId</td>
-                <td scope="row"><a href="@($"userview/{user.Id}")" class="btn btn-outline-primary">View</a></td>
-                <td scope="row"><a href="@($"userupdate/{user.Id}")" class="btn btn-outline-primary">Update</a></td>
+                <td scope="row"><a href="@($"userview/{user.Id}")" class="btn btn-outline-primary">View</a></td>              
                 <AuthorizeView Roles="Admin, Teacher">
                     <Authorized>
-                <td scope="row"><a href="@($"userdelete/{user.Id}")" class="btn btn-outline-primary">Delete</a></td>
+                        <td scope="row"><a href="@($"userupdate/{user.Id}")" class="btn btn-outline-primary">Update</a></td>
+                    </Authorized>
+                </AuthorizeView>
+                <AuthorizeView Roles="Admin, Teacher">
+                    <Authorized>
+                        <td scope="row"><a href="@($"userdelete/{user.Id}")" class="btn btn-outline-primary">Delete</a></td>
                     </Authorized>
                 </AuthorizeView>
          </tr>   
