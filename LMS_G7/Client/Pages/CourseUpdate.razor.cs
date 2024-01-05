@@ -17,7 +17,7 @@ namespace LMS_G7.Client.Pages
         [Parameter]
         public int? Id { get; set; }
 
-        public Course Course { get; set; } = new Course();
+        public Course Course { get; set; }
 
         protected override void OnInitialized()
         {
@@ -29,11 +29,11 @@ namespace LMS_G7.Client.Pages
             base.OnInitialized();
         }
 
-        
+
         protected async Task HandleValidSubmit()
         {
             CourseDataService.UpdateCourse(Course);
-            NavigationManager.NavigateTo($"/devicelst");
+            NavigationManager.NavigateTo($"/courselst");
         }
     }
 

@@ -1,5 +1,5 @@
 ﻿@page "/CourseLst"
-
+@attribute [Authorize(Roles = "Admin, Teacher, Student")]
 
 <CourseList></CourseList>
 

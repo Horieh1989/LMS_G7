@@ -13,9 +13,9 @@ namespace LMS_G7.Client.Services
             //CourseList.Add(new Course() { Id = 2, Name = Name.Systemdeveloper, Description = "This course..", StartDate = DateTime.Today });
             //CourseList.Add(new Course() { Id = 3, Name = Name.SupportTeknik, Description = "This course..", StartDate = DateTime.Today });
 
-            CourseList.Add(new Course() { Id = 1, Name = "DotNetProgramming", Description = "This course..", StartDate = DateTime.Today,EndDate=DateTime.Now });
-            CourseList.Add(new Course() { Id = 2, Name = "SystemDeveloper", Description = "This course..", StartDate = DateTime.Today ,EndDate = DateTime.Now });
-            CourseList.Add(new Course() { Id = 3, Name = "SupportTeknik", Description = "This course..", StartDate = DateTime.Today , EndDate = DateTime.Now });
+            CourseList.Add(new Course() { Id = 1, Name = "DotNetProgramming", Description = "This course..", StartDate = DateTime.Today, EndDate = DateTime.Now });
+            CourseList.Add(new Course() { Id = 2, Name = "SystemDeveloper", Description = "This course..", StartDate = DateTime.Today, EndDate = DateTime.Now });
+            CourseList.Add(new Course() { Id = 3, Name = "SupportTeknik", Description = "This course..", StartDate = DateTime.Today, EndDate = DateTime.Now });
 
 
 
@@ -29,10 +29,10 @@ namespace LMS_G7.Client.Services
 
         public void DeleteCourse(int Id)
         {
-            var Course = CourseList.FirstOrDefault(c => c.Id == Id);
-            if (Course! == null)
+            var course = CourseList.FirstOrDefault(c => c.Id == Id);
+            if (course != null)
             {
-                CourseList.Remove(Course);
+                CourseList.Remove(course);
             }
         }
 
@@ -54,6 +54,7 @@ namespace LMS_G7.Client.Services
                 Course.Name = UpdatedCourse.Name;
                 Course.Description = UpdatedCourse.Description;
                 Course.StartDate = UpdatedCourse.StartDate;
+                Course.EndDate = UpdatedCourse.EndDate;
             }
         }
     }
