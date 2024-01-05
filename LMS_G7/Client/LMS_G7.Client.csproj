@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Activity.razor.cs" />
+    <Compile Remove="Components\CourseList.razor.cs" />
+    <Compile Remove="Component\CourseList.razor.cs" />
+    <Compile Remove="Pages\CourseAdd.razor.cs" />
+    <Compile Remove="Pages\CourseDelet.razor.cs" />
+    <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
     <Compile Remove="Pages\ModuleDelete.razor.cs" />
     <Compile Remove="Pages\ModuleDetails.razor.cs" />
