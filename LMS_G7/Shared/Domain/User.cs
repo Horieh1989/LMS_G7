@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,10 @@ namespace LMS_G7.Shared.Domain
     public class User
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        [StringLength(15, ErrorMessage = "First name should be between {2} and {1}", MinimumLength = 2)]
+        public string FirstName { get; set; } = string.Empty;
+        [StringLength(15, ErrorMessage = "First name should be between {2} and {1}", MinimumLength = 2)]
+        public string LastName { get; set; } = string.Empty;
 
         public string FullName => $"{FirstName} {LastName}";
         public string Email { get; set; }

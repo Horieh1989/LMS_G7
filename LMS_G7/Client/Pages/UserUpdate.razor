@@ -1,0 +1,45 @@
+﻿@page "/userupdate/{Id:int}"
+
+@* @attribute [Authorize(Roles="Admin")] *@
+
+<h3>UserUpdate</h3>
+
+@* <Section class=""> *@
+    <EditForm Model="@User" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator/>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th> 
+                <th scope="col">Course Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td scope="row">
+                    <InputNumber id="Id" @bind-Value="User.Id" class="form-control col-md-8"></InputNumber>
+                </td>
+                <td scope="row">
+                    <InputText id="FirstName" @bind-Value="User.FirstName" class="form-control col-md-8"></InputText>
+                    <ValidationMessage For="@(()=>User.FirstName)"></ValidationMessage>
+                </td>
+                <td scope="row">
+                    <InputText id="LastName" @bind-Value="User.LastName" class="form-control col-md-8"></InputText>
+                    <ValidationMessage For="@(()=>User.LastName)"></ValidationMessage>
+                </td>
+                <td scope="row">
+                    <InputText id="Email" @bind-Value="User.Email" class="form-control col-md-8"></InputText>
+                </td>
+                <td scope="row">
+                    <InputNumber id="CourseId" @bind-Value="User.CourseId" class="form-control col-md-8"></InputNumber>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="@("listofusers")" class="btn btn-outline-primary">Back to User List</a>&nbsp;
+        <button type="submit" class="btn btn-primary me-1">Update User</button>
+    </EditForm>
+@* </Section> *@
