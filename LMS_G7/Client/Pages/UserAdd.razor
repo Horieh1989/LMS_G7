@@ -32,11 +32,7 @@
                 </tr>
             </tbody>
         </table>
+        <a href="@("listofusers")" class="btn btn-outline-primary">Back to User List</a>&nbsp;
+        <button type="submit" class="btn btn-primary me-1">Add User</button>
     </EditForm>
-    <AuthorizeView Roles="Admin, Teacher">
-        <Authorized>
-            <a href="@("listofusers")" class="btn btn-outline-primary">Back to User List</a>&nbsp;
-            <button type="submit" class="btn btn-primary me-1">Add User</button>
-        </Authorized>
-    </AuthorizeView>
 </section>
