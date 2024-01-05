@@ -1,9 +1,32 @@
 ﻿@page "/"
-
+@* @attribute [Authorize(Roles ="Admin")] *@
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Hello, Welcome to Learning Management System!</h1>
 
-Welcome to your new app.
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <h5>Hi Admin: @context.User.Identity?.Name!</h5><br />
+        <h6>Congratulations! You logged in!</h6>
+    </Authorized>
+</AuthorizeView>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<AuthorizeView Roles="Teacher">
+    <Authorized>
+        <h5>Hi Teacher: @context.User.Identity?.Name!</h5><br />
+        <h6>Congratulations! You logged in!</h6>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="Student">
+    <Authorized>
+        <h5>Hi Student: @context.User.Identity?.Name!</h5><br />
+        <h6>Congratulations! You logged in!</h6>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView>
+    <NotAuthorized>
+        <h6>Not logged In!</h6>
+    </NotAuthorized>
+</AuthorizeView>
