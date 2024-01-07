@@ -26,10 +26,8 @@ namespace LMS_G7.Shared.Domain
         public DateTime EndDate { get; set; }
 
         //Navigation Properties
-        public ICollection<User> Users { get; set; } = new List<User>();
-        public ICollection<Module> Modules { get; set; } = new List<Module>();
-        public ICollection<Document> Documents { get; set; } = new List<Document>();
-
+        public ICollection<User> Users { get; set; }
+        public ICollection<Module> Modules { get; set; }
     }
 
 }

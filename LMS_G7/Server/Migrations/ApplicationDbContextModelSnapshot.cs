@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LMS_G7.Server.Data.Migrations
+namespace LMS_G7.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -260,7 +260,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("ModuleId");
 
-                    b.ToTable("Activities", (string)null);
+                    b.ToTable("Activities");
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.ActivityType", b =>
@@ -276,7 +276,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ActivityType", (string)null);
+                    b.ToTable("ActivityType");
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Course", b =>
@@ -293,15 +293,15 @@ namespace LMS_G7.Server.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Course", (string)null);
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Document", b =>
@@ -312,16 +312,13 @@ namespace LMS_G7.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ActivityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseId")
+                    b.Property<int?>("ActivityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModuleId")
+                    b.Property<int?>("ModuleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -330,20 +327,18 @@ namespace LMS_G7.Server.Data.Migrations
                     b.Property<DateTime>("TimeStamp")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ActivityId");
 
-                    b.HasIndex("CourseId");
-
                     b.HasIndex("ModuleId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Document", (string)null);
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Module", b =>
@@ -375,7 +370,7 @@ namespace LMS_G7.Server.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Module", (string)null);
+                    b.ToTable("Modules");
                 });
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.User", b =>
@@ -386,23 +381,25 @@ namespace LMS_G7.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
+                    b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -565,31 +562,17 @@ namespace LMS_G7.Server.Data.Migrations
                 {
                     b.HasOne("LMS_G7.Shared.Domain.Activity", "Activity")
                         .WithMany("Documents")
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LMS_G7.Shared.Domain.Course", "Course")
-                        .WithMany("Documents")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ActivityId");
 
                     b.HasOne("LMS_G7.Shared.Domain.Module", "Module")
                         .WithMany("Documents")
-                        .HasForeignKey("ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ModuleId");
 
                     b.HasOne("LMS_G7.Shared.Domain.User", "User")
                         .WithMany("Documents")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Activity");
-
-                    b.Navigation("Course");
 
                     b.Navigation("Module");
 
@@ -611,9 +594,7 @@ namespace LMS_G7.Server.Data.Migrations
                 {
                     b.HasOne("LMS_G7.Shared.Domain.Course", "Course")
                         .WithMany("Users")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.Navigation("Course");
                 });
@@ -681,8 +662,6 @@ namespace LMS_G7.Server.Data.Migrations
 
             modelBuilder.Entity("LMS_G7.Shared.Domain.Course", b =>
                 {
-                    b.Navigation("Documents");
-
                     b.Navigation("Modules");
 
                     b.Navigation("Users");

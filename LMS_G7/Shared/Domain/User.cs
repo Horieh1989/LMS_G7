@@ -28,11 +28,11 @@ namespace LMS_G7.Shared.Domain
         //public UserRole UserRole { get; set; }
 
         //Foreign Key
-        public int CourseId { get; set; }
+        public int? CourseId { get; set; }
 
         //Navigation Properties
         public Course Course { get; set; }
-        public ICollection<Document> Documents { get; set; } = new List<Document>();
+        public ICollection<Document> Documents { get; set; }
 
     }
 }

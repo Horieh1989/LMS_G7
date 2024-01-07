@@ -15,14 +15,12 @@ namespace LMS_G7.Shared.Domain
         public DateTime TimeStamp { get; set; }
 
         //Foreign Keys
-        public int UserId { get; set; }
-        public int CourseId { get; set; }
-        public int ModuleId { get; set; }
-        public int ActivityId { get; set; }
+        public int? UserId { get; set; }
+        public int? ModuleId { get; set; }
+        public int? ActivityId { get; set; }
 
         //Navigation Properties
         public User User { get; set; }
-        public Course Course { get; set; }
         public Module Module { get; set; }
         public Activity Activity { get; set; }
 

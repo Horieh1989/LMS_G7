@@ -13,6 +13,6 @@ namespace LMS_G7.Shared.Domain
         public string Type { get; set; }
 
         //Navigation Prop.
-        public ICollection<Activity> Activities { get; set; } = new List<Activity>();
+        public ICollection<Activity> Activities { get; set; }
     }
 }
