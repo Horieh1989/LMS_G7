@@ -1,5 +1,6 @@
 using LMS_G7.Server.Controllers;
 using LMS_G7.Server.Data;
+using LMS_G7.Server.Migrations;
 using LMS_G7.Server.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +36,25 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var db = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
+    await db.Database.EnsureDeletedAsync();
+    await db.Database.MigrateAsync();
+
+    try
+    {
+        await SeedData.InitAsync(db);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+        throw;
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
