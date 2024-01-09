@@ -9,12 +9,12 @@ namespace LMS_G7.Client.Pages
     public partial class ActivityAdd
     {
         [Inject]
-        public IActivityDataService activityDataService { get; set; }
+        public IActivityDataService ActivityDataService { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public Activity activity { get; set; } = new Activity();
+        public Activity Activity { get; set; } = new Activity();
 
         protected override void OnInitialized()
         {
@@ -23,7 +23,7 @@ namespace LMS_G7.Client.Pages
 
         protected async Task HandleValidSubmit()
         {
-            activityDataService.AddActivity(activity);
+            ActivityDataService.AddActivity(Activity);
             NavigationManager.NavigateTo("/listofActivity");
         }
     }

@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\ActivityAdd2.razor.cs" />
+    <Compile Remove="Pages\ActivityUpdate.razor.cs" />
     <Compile Remove="Pages\CourseDelet.razor.cs" />
     <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
@@ -22,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\ActivityAdd2.razor" />
+    <Content Remove="Pages\ActivityUpdate.razor" />
     <Content Remove="Pages\ModuleAdd.razor" />
     <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />

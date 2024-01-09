@@ -1,40 +1,36 @@
 ﻿@page "/ActivityAdd"
 @using Microsoft.AspNetCore.Authorization
 
+
 @attribute [Authorize(Roles = "Admin, Teacher")]
 <section class="device-edit">
-    <EditForm Model="@activity" OnValidSubmit="HandleValidSubmit" OnChange="HandleFileSelected">
+    <EditForm Model="@Activity" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
         <table class="table">
             <thead>
-                <tr>                    
+                <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
-                    <th scope="col">Documents</th>    
                     <th scope="col">Module ID</th>
                 </tr>
             </thead>
             <tbody>
-                <ActivityAdd />
                 <tr>
                     <td scope="row">
-                        <InputText id="Activity Name" @bind-Value="activity.Name" class="form-control col-md-8"></InputText>
-                        @* <ValidationMessage For="@(()=>activity.Name)"></ValidationMessage> *@
+                        <InputText id="Name" @bind-Value="Activity.Name" class="form-control col-md-8"></InputText>
+                        <ValidationMessage For="@(()=>Activity.Name)"></ValidationMessage>
                     </td>
                     <td scope="row">
-                        <InputText id="Activity StartDate" @bind-Value="activity.StartDate.ToString()" class="form-control col-md-8"></InputText>
-                        
+                        <InputDate id="StartDate" @bind-Value="Activity.StartDate" class="form-control col-md-8"></InputDate>
+                        <ValidationMessage For="@(()=>Activity.StartDate)"></ValidationMessage>
                     </td>
                     <td scope="row">
-                        <InputText id="Activity EndDate" @bind-Value="activity.EndDate.ToString()" class="form-control col-md-8"></InputText>
+                        <InputDate id="EndDate" @bind-Value="Activity.EndDate" class="form-control col-md-8"></InputDate>
+                        <ValidationMessage For="@(()=>Activity.EndDate)"></ValidationMessage>
                     </td>
                     <td scope="row">
-                       @* <InputNumber id="Activity Documents" @bind-Value="activity.Documents" class="form-control col-md-8"></InputNumber> *@
-                        <InputFile id="Activity Documents" @bind-Value="activity.Documents" class="form-control col-md-8"></InputFile>
-                    </td>
-                    <td scope="row">
-                        <InputNumber id="Activity ModuleId" @bind-Value="activity.ModuleId" class="form-control col-md-8"></InputNumber>                        
+                        <InputNumber id="ModuleId" @bind-Value="Activity.ModuleId" class="form-control col-md-8"></InputNumber>
                     </td>
                 </tr>
             </tbody>
@@ -43,4 +39,3 @@
         <button type="submit" class="btn btn-primary me-1">Add Activity</button>
     </EditForm>
 </section>
-
