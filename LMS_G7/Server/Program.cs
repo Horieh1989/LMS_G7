@@ -1,11 +1,10 @@
-using LMS_G7.Server.Controllers;
 using LMS_G7.Server.Data;
-using LMS_G7.Server.Migrations;
 using LMS_G7.Server.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using LMS_G7.Server.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,24 +36,8 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var serviceProvider = scope.ServiceProvider;
-    var db = serviceProvider.GetRequiredService<ApplicationDbContext>();
-
-    await db.Database.EnsureDeletedAsync();
-    await db.Database.MigrateAsync();
-
-    try
-    {
-        await SeedData.InitAsync(db);
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine(e.Message);
-        throw;
-    }
-}
+// Ensure the database is created and seed data
+app.InitializeDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -78,7 +61,6 @@ app.UseRouting();
 
 app.UseIdentityServer();
 app.UseAuthorization();
-
 
 app.MapRazorPages();
 app.MapControllers();
