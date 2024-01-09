@@ -1,0 +1,49 @@
+﻿@page "/ActivityUpdate/{Id:int}"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin, Teacher")]
+
+<h3>UserUpdate</h3>
+
+@* <Section class=""> *@
+<EditForm Model="@activity" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Activity Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Documents</th>
+                <th scope="col">Module ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">
+                    <InputNumber id="Id" @bind-Value="activity.Id" class="form-control col-md-8"></InputNumber>
+                </td>
+                <td scope="row">
+                    <InputText id="Activity Name" @bind-Value="activity.Name" class="form-control col-md-8"></InputText>
+                    @* <ValidationMessage For="@(()=>activity.Name)"></ValidationMessage> *@
+                </td>
+                <td scope="row">
+                    <InputText id="Activity StartDate" @bind-Value="activity.StartDate.ToString()" class="form-control col-md-8"></InputText>                    
+                </td>
+                <td scope="row">
+                    <InputText id="Activity EndDate" @bind-Value="activity.EndDate.ToString()" class="form-control col-md-8"></InputText>
+                </td>
+                <td scope="row">
+                    @* <InputNumber id="Activity Documents" @bind-Value="activity.Documents" class="form-control col-md-8"></InputNumber> *@
+                    <InputFile OnChange="HandleFileSelected" id="Activity Documents" @bind-Value="activity.Documents" class="form-control col-md-8"></InputFile>
+                </td>
+                <td scope="row">
+                    <InputNumber id="Activity ModuleId" @bind-Value="activity.ModuleId" class="form-control col-md-8"></InputNumber>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="@("ListofActivity")" class="btn btn-outline-primary">Back to Activity List</a>&nbsp;
+    <button type="submit" class="btn btn-primary me-1">Update Activity</button>
+</EditForm>
+@* </Section> *@

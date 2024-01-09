@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Component\CourseList.razor.cs" />
+    <Compile Remove="Component\**" />
+    <Content Remove="Component\**" />
+    <EmbeddedResource Remove="Component\**" />
+    <None Remove="Component\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Pages\CourseDelet.razor.cs" />
     <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
@@ -34,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Component\" />
     <Folder Include="Service\" />
   </ItemGroup>
 

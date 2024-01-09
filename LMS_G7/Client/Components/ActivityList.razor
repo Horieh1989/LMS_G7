@@ -8,6 +8,16 @@
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>            
             <th scope="col">Module ID</th>
+            <AuthorizeView Roles="Admin, Teacher">
+                <Authorized>
+                    <th scope="col">Update</th>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Admin, Teacher">
+                <Authorized>
+                    <th scope="col">Delete</th>
+                </Authorized>
+            </AuthorizeView>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +30,16 @@
                 <td scope="row">@activity.EndDate</td>                
                 <td scope="row">@activity.ModuleId</td>
                 <td scope="row"><a href="@($"activityview/{activity.Id}")" class="btn btn-outline-primary">View</a></td>
+                <AuthorizeView Roles="Admin, Teacher">
+                    <Authorized>
+                        <td scope="row"><a href="@($"userupdate/{activity.Id}")" class="btn btn-outline-primary">Update</a></td>
+                    </Authorized>
+                </AuthorizeView>
+                <AuthorizeView Roles="Admin, Teacher">
+                    <Authorized>
+                        <td scope="row"><a href="@($"userdelete/{activity.Id}")" class="btn btn-outline-primary">Delete</a></td>
+                    </Authorized>
+                </AuthorizeView>
             </tr>
         }
     </tbody>

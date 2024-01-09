@@ -1,0 +1,12 @@
+﻿@page "/ListofActivity"
+@attribute [Authorize(Roles = "Admin, Teacher, Student")]
+
+<h3>UserList</h3>
+<ActivityStats></ActivityStats>
+<ActivityList ExtraCaption="This is the list of the Activity"></ActivityList>
+
+<AuthorizeView Roles="Admin, Teacher">
+    <Authorized>
+        <a href="@("ActivityAdd")" class="btn btn-outline-primary">Add New Activity</a>
+    </Authorized>
+</AuthorizeView>
