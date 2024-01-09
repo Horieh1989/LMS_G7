@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace YourNamespace.Extensions
+namespace LMS_G7.Server.Extensions
 {
     public static class DbInitializerExtension
     {
