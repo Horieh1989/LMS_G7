@@ -1,168 +1,104 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LMS_G7.Server.Data;
 using LMS_G7.Shared.Domain;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LMS_G7.Server.Controllers
 {
-    public class ModulesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ModuleController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ModulesController(ApplicationDbContext context)
+        public ModuleController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Modules
-        public async Task<IActionResult> Index()
+        // GET: api/Module
+        [HttpGet]
+        public async Task<ActionResult<List<Module>>> GetModules()
         {
-            var applicationDbContext = _context.Modules.Include(_ => _.Course);
-            return View(await applicationDbContext.ToListAsync());
+            var modules = await _context.Modules.ToListAsync();
+            return Ok(modules);
         }
 
-        // GET: Modules/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Module/1
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Module>> GetModule(int id)
         {
-            if (id == null || _context.Modules == null)
+            var module = await _context.Modules.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (module == null)
             {
                 return NotFound();
             }
 
-            var @module = await _context.Modules
-                .Include(_ => _.Course)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@module == null)
-            {
-                return NotFound();
-            }
-
-            return View(@module);
+            return Ok(module);
         }
 
-        // GET: Modules/Create
-        public IActionResult Create()
-        {
-            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id");
-            return View();
-        }
-
-        // POST: Modules/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: api/Module
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,StartDate,EndDate,CourseId")] Module @module)
+        public async Task<ActionResult<Module>> AddModule(Module module)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(@module);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", @module.CourseId);
-            return View(@module);
-        }
-
-        // GET: Modules/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Modules == null)
-            {
-                return NotFound();
-            }
-
-            var @module = await _context.Modules.FindAsync(id);
-            if (@module == null)
-            {
-                return NotFound();
-            }
-            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", @module.CourseId);
-            return View(@module);
-        }
-
-        // POST: Modules/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,StartDate,EndDate,CourseId")] Module @module)
-        {
-            if (id != @module.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(@module);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ModuleExists(@module.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Id", @module.CourseId);
-            return View(@module);
-        }
-
-        // GET: Modules/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Modules == null)
-            {
-                return NotFound();
-            }
-
-            var @module = await _context.Modules
-                .Include(_ => _.Course)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@module == null)
-            {
-                return NotFound();
-            }
-
-            return View(@module);
-        }
-
-        // POST: Modules/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Modules == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Modules'  is null.");
-            }
-            var @module = await _context.Modules.FindAsync(id);
-            if (@module != null)
-            {
-                _context.Modules.Remove(@module);
-            }
-
+            var resultModule = await _context.Modules.AddAsync(module);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return Ok(resultModule.Entity);
+        }
+
+        // PUT: api/Module/1
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateModule(int id, Module module)
+        {
+            if (id != module.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(module).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ModuleExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/Module/1
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Module>> DeleteModule(int id)
+        {
+            var module = await _context.Modules.FindAsync(id);
+            if (module == null)
+            {
+                return NotFound();
+            }
+
+            _context.Modules.Remove(module);
+            await _context.SaveChangesAsync();
+
+            return Ok(module);
         }
 
         private bool ModuleExists(int id)
         {
-            return (_context.Modules?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _context.Modules.Any(e => e.Id == id);
         }
     }
 }
