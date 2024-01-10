@@ -1,80 +1,43 @@
-﻿@page "/moduleadd/{Id:int}"
+﻿@page "/moduleadd"
+@inject IModuleDataService ModuleDataService
+@inject NavigationManager Navigation
 
-@using LMS_G7.Shared.Domain
+<h3>Add Module</h3>
 
-<section class="card p-3 col-md-8 col-lg-6">
+<div>
+    <form>
+        <div class="form-group">
+            <label for="moduleName">Module Name</label>
+            <input type="text" class="form-control" id="moduleName" @bind="newModule.Name">
+        </div>
+        <div class="form-group">
+            <label for="moduleDescription">Module Description</label>
+            <textarea class="form-control" id="moduleDescription" rows="3" @bind="newModule.Description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" @bind="newModule.StartDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" @bind="newModule.EndDate">
+        </div>
+        <div class="form-group">
+            <label for="courseId">Course Id</label>
+            <input type="number" class="form-control" id="courseId" @bind="newModule.CourseId">
+        </div>
+        <a href="@($"modules")" class="btn btn-outline-primary">Back to Module list</a>&nbsp;
 
-	@if (!string.IsNullOrWhiteSpace(ErrorMessage))
-	{
-		<p class="alert alert-danger">@ErrorMessage</p>
-	}
+        <button type="button" class="btn btn-primary" @onclick="AddModule">Add Module</button>
+    </form>
+</div>
 
-	<h3>Add Module</h3>
+@code {
+    Module newModule = new Module();
 
-	<EditForm Model="@Module" OnValidSubmit="@HandleValidSubmit">
-
-		<DataAnnotationsValidator></DataAnnotationsValidator>
-		<div class="d-lg-table">
-			<div class="row d-lg-table-row mb-3 mb-lg-0">
-				<div class="d-lg-table-cell w-auto pe-1 pb-lg-3">
-					<label for="name" class="col-form-labelo">Name: </label>
-				</div>
-				<div class="d-lg-table-cell ps-lg-0 pb-lg-3">
-					<InputText id="name" class="form-control" @bind-Value="@Module.Name" placeholder="Name"></InputText>
-					<ValidationMessage class="offset-md-3" For="@(() => Module.Name)" />
-				</div>
-			</div>
-
-			<div class="row d-lg-table-row mb-3 mb-lg-0">
-				<div class="d-lg-table-cell w-auto pe-1 pb-lg-3">
-					<label for="description" class="col-form-labelo">Description: </label>
-				</div>
-				<div class="d-lg-table-cell ps-lg-0 pb-lg-3">
-					<InputText id="description" class="form-control" @bind-Value="@Module.Description" placeholder="Description"></InputText>
-					<ValidationMessage class="offset-md-3" For="@(() => Module.Description)" />
-				</div>
-			</div>
-
-			<div class="row d-lg-table-row mb-3 mb-lg-0">
-				<div class="d-lg-table-cell w-auto pe-1 pb-lg-3">
-					<label for="start-date" class="col-form-label">Start date: </label>
-				</div>
-				<div class="d-lg-table-cell ps-lg-0 pb-lg-3">
-					<InputDate id="start-date" class="form-control" @bind-Value="@Module.StartDate" placeholder="Start date"></InputDate>
-				</div>
-			</div>
-
-			<div class="row d-lg-table-row mb-3 mb-lg-0">
-				<div class="d-lg-table-cell w-auto pe-1 pb-lg-3">
-					<label for="end-date" class="col-form-label">End date: </label>
-				</div>
-				<div class="d-lg-table-cell ps-lg-0 pb-lg-3">
-					<InputDate id="end-date" class="form-control" @bind-Value="@Module.EndDate" placeholder="End date"></InputDate>
-				</div>
-			</div>
-
-			<div class="row d-lg-table-row mb-3 mb-lg-0">
-				<div class="d-lg-table-cell w-auto pe-1 pb-lg-3">
-					<label for="country" class="col-form-label w-auto">Activities: </label>
-				</div>
-				<div class="d-lg-table-cell ps-lg-0 pb-lg-3">
-					<button class="btn btn-primary">Add activity</button>
-				</div>
-			</div>
-		</div>
-
-		<button type="submit" class="btn btn-success me-1">Save module</button>
-
-		 @if (Module.Id != default)
-		{
-			<button type="button" class="btn btn-danger my-1" @onclick="@DeleteModule">
-			Delete
-			</button>
-		}
-
-		@* <button type="button" class="btn btn-outline-primary ms-1" @onclick="@(()=> {navigationManager.NavigateTo("/");})">Back</button> *@
-
-	</EditForm>
-
-
-</section>
+    void AddModule()
+    {
+        ModuleDataService.AddModule(newModule);
+        Navigation.NavigateTo("/modules"); // Redirect to the module list page
+    }
+}
