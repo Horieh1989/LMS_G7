@@ -1,8 +1,8 @@
 ﻿@page "/listofusers"
 @attribute [Authorize(Roles = "Admin, Teacher, Student")]
 
-<h3>UserList</h3>
-<UserStats></UserStats>
+<h3>List of Users</h3><br />
+@* <UserStats></UserStats> *@
 <UserList ExtraCaption="This is the list of the Users"></UserList>
 
 <AuthorizeView Roles="Admin, Teacher">

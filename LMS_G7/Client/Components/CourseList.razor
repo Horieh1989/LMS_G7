@@ -1,4 +1,5 @@
-﻿@ExtraCaption
+﻿@inject HttpClient Http
+
 <h3>List of courses </h3>
 <a href="@($"CourseAdd")" class="btn btn-outline-primary">Add</a>@* reference page ro miarim ba id devive age bekhaim *@
 <table class="table">
@@ -16,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var course in CourseLst)
+        @foreach (var course in courses)
         {
             <tr>
 
@@ -38,3 +39,14 @@
 
 
 </table>
+
+@code {
+    List<Course> courses = new List<Course>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await Http.GetFromJsonAsync<List<Course>>("api/Course");
+        if (result != null)
+            courses = result;
+    }
+}    

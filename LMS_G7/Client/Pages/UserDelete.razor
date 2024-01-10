@@ -1,5 +1,6 @@
 ﻿@page "/userdelete/{Id:int}"
-@using Microsoft.AspNetCore.Authorization
+@inject HttpClient Http
+
 
 @attribute [Authorize(Roles ="Admin, Teacher")] 
 <h3>UserDelete</h3>
@@ -28,6 +29,6 @@
 
 <AuthorizeView Roles="Admin, Teacher">
     <Authorized>
-        <a class="btn btn-outline-primary" @onclick="() => Delete(User.Id)">Delete</a>
+        <a class="btn btn-outline-primary" @onclick="Delete">Delete</a>
     </Authorized>
 </AuthorizeView>

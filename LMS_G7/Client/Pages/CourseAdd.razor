@@ -1,13 +1,18 @@
 ﻿@page "/CourseAdd"
+@inject HttpClient Http
 
 <h3>Add Course</h3>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ErrorMessage
+    </div>
+}
 
 <section class="course-edit">
 
     <EditForm Model="@Course" OnValidSubmit="@HandleValidSubmit">
-
-        
-
         <table class="table">
             <thead>
                 <tr>

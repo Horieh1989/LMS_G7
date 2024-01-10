@@ -1,6 +1,7 @@
 ﻿@page "/CourseLst"
+@inject HttpClient Http
 @attribute [Authorize(Roles = "Admin, Teacher, Student")]
 
-<CourseList></CourseList>
 
+<CourseList></CourseList>
 
