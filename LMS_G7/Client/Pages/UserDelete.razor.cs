@@ -2,6 +2,7 @@
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
 
 namespace LMS_G7.Client.Pages
 {
@@ -17,15 +18,17 @@ namespace LMS_G7.Client.Pages
         [Parameter]
         public int? Id { get; set; }
 
-        public User User { get; set; }
+        public User User { get; set; } = new User();
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            User = UserDataService.GetUser(Id.Value);
+            var result = await Http.GetFromJsonAsync<User>($"api/User/{Id}");
+            if (result != null)
+                User = result;
         }
-        protected void Delete(int id)
+        protected async Task Delete()
         {
-            UserDataService.DeleteUser(User.Id);
+            await Http.DeleteAsync($"api/User/{Id}");
             NavigationManager.NavigateTo("/listofusers");
         }
     }
