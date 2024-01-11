@@ -1,6 +1,7 @@
 ﻿using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
 
 namespace LMS_G7.Client.Pages
 {
@@ -11,6 +12,7 @@ namespace LMS_G7.Client.Pages
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
+        public string ErrorMessage { get; set; } = string.Empty;
 
         public Activity Activity { get; set; } = new Activity();
 
@@ -19,10 +21,21 @@ namespace LMS_G7.Client.Pages
             base.OnInitialized();
         }
 
-        protected async Task HandleValidSubmit()
+        protected async Task HandleValidSubmit()// I should ask this part?
         {
-            ActivityDataService.AddActivity(Activity);
-            NavigationManager.NavigateTo("/listofActivity");
+            try
+            {
+                var result = await Http.PostAsJsonAsync<Activity>("api/Activity", Activity);
+                if (!result.IsSuccessStatusCode)
+                {
+                    ErrorMessage = "Could not add Activity!";
+                }
+                NavigationManager.NavigateTo($"/listofActivity");
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+            }
         }
     }
 }
