@@ -1,27 +1,46 @@
-﻿@ExtraCaption
+﻿@page "/modules"
+@inject HttpClient Http
+
+<h3>List of Modules</h3>
+<a href="@($"ModuleAdd")" class="btn btn-outline-primary">Add</a>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Module Id</th>
-            <th scope="col">Name</th>
+            <th scope="col">Module Name</th>
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
-            <th scope="col">Course Id</th>
+            <th scope="col">Description</th>
             <th scope="col">View</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var module in ModuleLst)
+        @foreach (var module in modules)
         {
             <tr>
                 <td scope="row">@module.Id</td>
                 <td scope="row">@module.Name</td>
                 <td scope="row">@module.StartDate</td>
                 <td scope="row">@module.EndDate</td>
-                <td scope="row">@module.CourseId</td>
+                <td scope="row">@module.Description</td>
                 <td scope="row"><a href="@($"moduleview/{module.Id}")" class="btn btn-outline-primary">View</a></td>
+                <td scope="row"><a href="@($"moduledelete/{module.Id}")" class="btn btn-outline-primary">Delete</a></td>
+                <td scope="row"><a href="@($"moduleupdate/{module.Id}")" class="btn btn-outline-primary">Update</a></td>
             </tr>
         }
     </tbody>
 </table>
+
+@code {
+    List<Module> modules = new List<Module>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await Http.GetFromJsonAsync<List<Module>>("api/Module");
+        if (result != null)
+            modules = result;
+    }
+}
