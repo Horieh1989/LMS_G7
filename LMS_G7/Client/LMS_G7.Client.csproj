@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Compile Remove="Components\ActivityList.razor.cs" />
-    <Compile Remove="Components\CourseList.razor.cs" />
     <Compile Remove="Components\UserStats.razor.cs" />
     <Compile Remove="Pages\ActivityAdd.razor.cs" />
     <Compile Remove="Pages\ActivityAdd2.razor.cs" />

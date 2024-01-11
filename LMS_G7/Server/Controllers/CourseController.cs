@@ -34,12 +34,49 @@ namespace LMS_G7.Server.Controllers
         }
 
         [HttpPost]
+        // create new instance our course
         public async Task<ActionResult<Course>> AddCourse(Course course)
         {
             var resultCourse = await _context.Courses.AddAsync(course);
             var resultSave = _context.SaveChangesAsync();
 
             return Ok(resultCourse);
+        }
+        [HttpPut]
+        //update
+        public async Task<ActionResult<List<Course>>> UpdateCourse(int id, Course course)
+
+        {
+            var resault = await _context.Courses.FindAsync(id);
+            if (resault == null)
+            {
+                return NotFound("this course does not exist");
+            }
+
+            resault.StartDate = course.StartDate;
+            resault.EndDate = course.EndDate;
+            resault.Description = course.Description;
+            resault.Name = course.Name;
+
+            await _context.SaveChangesAsync();
+            return await GetAllCourses();
+
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult<List<Course>>> DeleteUser(int id)
+        {
+
+            var result = await _context.Courses.FindAsync(id);
+            if (result == null)
+            {
+                return NotFound("this course does not exist");
+            }
+            _context.Courses.Remove(result);
+            await _context.SaveChangesAsync();
+            return await GetAllCourses();
+
         }
 
     }

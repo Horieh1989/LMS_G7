@@ -11,8 +11,17 @@
             <th scope="col">Course End Date</th>
             <th scope="col">Course Description</th>
             <th scope="col">View</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Update</th>
+            <AuthorizeView Roles="Admin, Teacher">
+                <Authorized>
+                    <th scope="col">Update</th>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Admin, Teacher">
+                <Authorized>
+                    <th scope="col">Delete</th>
+                </Authorized>
+            </AuthorizeView>
+           
            
         </tr>
     </thead>
@@ -27,9 +36,17 @@
                 <td scope="row">@course.EndDate</td>
                 <td scope="row">@course.Description </td>
                 <td scope="row"><a href="@($"courseview/{course.Id}")" class="btn btn-outline-primary">View</a></td>
-              
-               <td scope="row"><a href="@($"coursedelete/{course.Id}")" class="btn btn-outline-primary">Delete</a></td>@* reference page ro miarim ba id devive age bekhaim *@
-               <td scope="row"><a href="@($"courseupdate/{course.Id}")" class="btn btn-outline-primary">Update</a></td>@* reference page ro miarim ba id devive age bekhaim *@
+
+                <AuthorizeView Roles="Admin, Teacher">
+                    <Authorized>
+                        <td scope="row"><a href="@($"courseupdate/{course.Id}")" class="btn btn-outline-primary">Update</a></td>
+                    </Authorized>
+                </AuthorizeView>
+                <AuthorizeView Roles="Admin, Teacher">
+                    <Authorized>
+                        <td scope="row"><a href="@($"coursedelete/{course.Id}")" class="btn btn-outline-primary">Delete</a></td>
+                    </Authorized>
+                </AuthorizeView>
                
             </tr>
 
