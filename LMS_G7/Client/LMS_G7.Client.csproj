@@ -22,18 +22,35 @@
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
     <Compile Remove="Pages\ModuleDelete.razor.cs" />
     <Compile Remove="Pages\ModuleDetails.razor.cs" />
+    <Compile Remove="Pages\ModuleUpdate.razor.cs" />
+    <Compile Remove="Pages\ModuleView.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Components\UserStats.razor" />
     <Content Remove="Pages\ActivityAdd2.razor" />
-    <Content Remove="Pages\ModuleAdd.razor" />
-    <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />
-    <Content Remove="Pages\ModuleUpdate.razor" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net7.0\LMS_G7.Client.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net7.0\LMS_G7.Client.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net7.0\LMS_G7.Client.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\net7.0\LMS_G7.Client.sourcelink.json" />
+    <Content Include="obj\LMS_G7.Client.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="Pages\ModuleAdd.razor.cs" />
+    <Content Include="Pages\ModuleDelete.razor.cs" />
+    <Content Include="Pages\ModuleUpdate.razor.cs" />
+    <Content Include="Pages\ModuleView.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fluent.Infrastructure" Version="2.0.0-beta-01" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="0.1.0-alpha.22351.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.13" PrivateAssets="all" />
@@ -46,7 +63,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bin\Debug\net7.0\" />
+    <Folder Include="obj\Debug\net7.0\refint\" />
+    <Folder Include="obj\Debug\net7.0\ref\" />
+    <Folder Include="obj\Debug\net7.0\staticwebassets\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.assets.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\net7.0\project.razor.vs.bin" />
+    <None Include="obj\LMS_G7.Client.csproj.nuget.g.props" />
+    <None Include="obj\LMS_G7.Client.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
   </ItemGroup>
 
 </Project>

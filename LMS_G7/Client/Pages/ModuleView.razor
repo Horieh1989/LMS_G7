@@ -1,0 +1,39 @@
+﻿@page "/moduleview/{moduleId:int}"
+@inject IModuleDataService ModuleDataService
+
+<h3>Module Details</h3>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Module Id</dt>
+        <dd class="col-sm-10">@Module.Id</dd>
+
+        <dt class="col-sm-2">Module Name</dt>
+        <dd class="col-sm-10">@Module.Name</dd>
+
+        <dt class="col-sm-2">Start Date</dt>
+        <dd class="col-sm-10">@Module.StartDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">End Date</dt>
+        <dd class="col-sm-10">@Module.EndDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Module.Description</dd>
+    </dl>
+</div>
+
+<a href="@($"moduleupdate/{Module.Id}")" class="btn btn-outline-primary">Edit Module</a>&nbsp;
+<a href="@($"moduledelete/{Module.Id}")" class="btn btn-outline-danger">Delete Module</a>&nbsp;
+<a href="/modules" class="btn btn-outline-primary">Back to Module List</a>
+
+@code {
+    [Parameter]
+    public int ModuleId { get; set; }
+
+    Module Module { get; set; } = new Module();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Module = await ModuleDataService.GetModule(ModuleId);
+    }
+}
