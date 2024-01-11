@@ -19,156 +19,67 @@ namespace LMS_G7.Server.Controllers
             _context = context;
         }
 
-        // GET: Activities
-        public async Task<IActionResult> Index()
+
+        [HttpGet]
+        public async Task<ActionResult<List<Activity>>> GetAllActivity()
         {
-            var applicationDbContext = _context.Activities.Include(a => a.ActivityType).Include(a => a.Module);
-            return View(await applicationDbContext.ToListAsync());
+            var list = await _context.Activities.ToListAsync();
+            return Ok(list);
         }
 
-        // GET: Activities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("{id}")]
+        //[Route("GetAllCoursesAndAllActivities")]
+        public async Task<ActionResult<Activity>> GetActivity(int id)
         {
-            if (id == null || _context.Activities == null)
-            {
-                return NotFound();
-            }
-
-            var activity = await _context.Activities
-                .Include(a => a.ActivityType)
-                .Include(a => a.Module)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (activity == null)
-            {
-                return NotFound();
-            }
-
-            return View(activity);
-        }
-
-        // GET: Activities/Create
-        public IActionResult Create()
-        {
-            ViewData["ActivityTypeId"] = new SelectList(_context.Set<ActivityType>(), "Id", "Id");
-            ViewData["ModuleId"] = new SelectList(_context.Modules, "Id", "Description");
-            return View();
-        }
-
-        // POST: Activities/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,StartDate,EndDate,ModuleId,ActivityTypeId")] Activity activity)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(activity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ActivityTypeId"] = new SelectList(_context.Set<ActivityType>(), "Id", "Id", activity.ActivityTypeId);
-            ViewData["ModuleId"] = new SelectList(_context.Modules, "Id", "Description", activity.ModuleId);
-            return View(activity);
-        }
-
-        // GET: Activities/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Activities == null)
-            {
-                return NotFound();
-            }
-
             var activity = await _context.Activities.FindAsync(id);
+
             if (activity == null)
             {
-                return NotFound();
+                return NotFound("This Activity does not exist");
             }
-            ViewData["ActivityTypeId"] = new SelectList(_context.Set<ActivityType>(), "Id", "Id", activity.ActivityTypeId);
-            ViewData["ModuleId"] = new SelectList(_context.Modules, "Id", "Description", activity.ModuleId);
-            return View(activity);
+            return Ok(activity);
         }
 
-        // POST: Activities/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,StartDate,EndDate,ModuleId,ActivityTypeId")] Activity activity)
+        public async Task<ActionResult<Activity>> AddActivity(Activity activity)
         {
-            if (id != activity.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(activity);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ActivityExists(activity.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ActivityTypeId"] = new SelectList(_context.Set<ActivityType>(), "Id", "Id", activity.ActivityTypeId);
-            ViewData["ModuleId"] = new SelectList(_context.Modules, "Id", "Description", activity.ModuleId);
-            return View(activity);
-        }
-
-        // GET: Activities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Activities == null)
-            {
-                return NotFound();
-            }
-
-            var activity = await _context.Activities
-                .Include(a => a.ActivityType)
-                .Include(a => a.Module)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (activity == null)
-            {
-                return NotFound();
-            }
-
-            return View(activity);
-        }
-
-        // POST: Activities/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Activities == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Activities'  is null.");
-            }
-            var activity = await _context.Activities.FindAsync(id);
-            if (activity != null)
-            {
-                _context.Activities.Remove(activity);
-            }
-            
+            var result = await _context.Activities.AddAsync(activity);
+            //var resultSave = _context.SaveChangesAsync();
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Ok(result);
         }
 
-        private bool ActivityExists(int id)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<List<Activity>>> UpdateActivity(int id, Activity activity)
         {
-          return (_context.Activities?.Any(e => e.Id == id)).GetValueOrDefault();
+            var result = await _context.Activities.FindAsync(id);
+            if (result == null)
+            {
+                return NotFound("This User does not exist1");
+            }
+
+            result.Name = activity.Name;
+            result.StartDate = activity.StartDate;
+            result.EndDate = activity.EndDate;
+            result.ModuleId = activity.ModuleId;
+
+            await _context.SaveChangesAsync();
+            return await GetAllActivity();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<Activity>>> DeleteActivity(int id)
+        {
+            var result = await _context.Activities.FindAsync(id);
+            if (result == null)
+            {
+                return NotFound("This User does not exist1");
+            }
+            _context.Activities.Remove(result);
+            await _context.SaveChangesAsync();
+            return await GetAllActivity();
+        }
+
+
     }
 }

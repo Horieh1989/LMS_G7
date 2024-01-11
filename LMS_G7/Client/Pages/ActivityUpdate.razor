@@ -1,6 +1,7 @@
 ﻿@page "/activityupdate/{Id:int}"
-
+@inject HttpClient Http
 @attribute [Authorize(Roles = "Admin, Teacher")]
+
 
 <h3>ActivityUpdate</h3>
 
