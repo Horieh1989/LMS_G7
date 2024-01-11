@@ -10,7 +10,9 @@ using LMS_G7.Shared.Domain;
 
 namespace LMS_G7.Server.Controllers
 {
-    public class ActivitiesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ActivitiesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
@@ -73,7 +75,7 @@ namespace LMS_G7.Server.Controllers
             var result = await _context.Activities.FindAsync(id);
             if (result == null)
             {
-                return NotFound("This User does not exist1");
+                return NotFound("This Activity does not exist1");
             }
             _context.Activities.Remove(result);
             await _context.SaveChangesAsync();
