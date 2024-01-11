@@ -8,29 +8,63 @@
 
   <ItemGroup>
     <Compile Remove="Component\**" />
+    <Compile Remove="Services\**" />
     <Content Remove="Component\**" />
+    <Content Remove="Services\**" />
     <EmbeddedResource Remove="Component\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="C:\Users\Elev\.nuget\packages\microsoft.net.compilers\1.0.0\build\..\tools\**" />
     <None Remove="Component\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\ActivityList.razor.cs" />
     <Compile Remove="Components\CourseList.razor.cs" />
     <Compile Remove="Components\UserStats.razor.cs" />
+    <Compile Remove="Pages\ActivityAdd.razor.cs" />
     <Compile Remove="Pages\ActivityAdd2.razor.cs" />
+    <Compile Remove="Pages\ActivityDelete.razor.cs" />
+    <Compile Remove="Pages\ActivityLst.razor.cs" />
+    <Compile Remove="Pages\ActivityUpdate.razor.cs" />
+    <Compile Remove="Pages\Activityview.razor.cs" />
     <Compile Remove="Pages\CourseDelet.razor.cs" />
     <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
     <Compile Remove="Pages\ModuleDelete.razor.cs" />
     <Compile Remove="Pages\ModuleDetails.razor.cs" />
+    <Compile Remove="Pages\ModuleUpdate.razor.cs" />
+    <Compile Remove="Pages\ModuleView.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Components\ActivityList.razor" />
     <Content Remove="Components\UserStats.razor" />
+    <Content Remove="Pages\ActivityAdd.razor" />
     <Content Remove="Pages\ActivityAdd2.razor" />
+    <Content Remove="Pages\ActivityDelete.razor" />
+    <Content Remove="Pages\ActivityLst.razor" />
+    <Content Remove="Pages\ActivityShow.razor" />
+    <Content Remove="Pages\ActivityUpdate.razor" />
+    <Content Remove="Pages\Activityview.razor" />
     <Content Remove="Pages\ModuleAdd.razor" />
     <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />
     <Content Remove="Pages\ModuleUpdate.razor" />
+    <Content Remove="Pages\ModuleView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net7.0\LMS_G7.Client.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net7.0\LMS_G7.Client.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net7.0\LMS_G7.Client.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\net7.0\LMS_G7.Client.sourcelink.json" />
+    <Content Include="obj\LMS_G7.Client.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,7 +80,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bin\Debug\net7.0\" />
+    <Folder Include="obj\Debug\net7.0\refint\" />
+    <Folder Include="obj\Debug\net7.0\ref\" />
+    <Folder Include="obj\Debug\net7.0\staticwebassets\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.assets.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net7.0\LMS_G7.Client.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\net7.0\project.razor.vs.bin" />
+    <None Include="obj\LMS_G7.Client.csproj.nuget.g.props" />
+    <None Include="obj\LMS_G7.Client.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
   </ItemGroup>
 
 </Project>

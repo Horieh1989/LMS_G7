@@ -1,67 +1,52 @@
-using LMS_G7.Client.Helpers;
-using LMS_G7.Client.Services;
+﻿using LMS_G7.Client.Services;
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
+using System;
+using System.Threading.Tasks;
 
 namespace LMS_G7.Client.Pages
 {
     public partial class ModuleDelete
     {
         [Inject]
-        public NavigationManager NavigationManager { get; set; } = default!;
+        IModuleDataService ModuleDataService { get; set; }
 
         [Inject]
-        public IGenericDataService GenericDataService { get; set; } = default!;
+        public NavigationManager Navigation { get; set; }
 
-        [Parameter]
-        public Guid? ModuleId { get; set; }
-
-        public Module Module { get; set; } = new Module();
-
-        public string ErrorMessage { get; set; } = string.Empty;
-
-        public string Message { get; set; } = string.Empty;
+        [Parameter] public int Id { get; set; }
+        private Module Module { get; set; } = new Module();
+        private string ErrorMessage { get; set; } = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
-            if (ModuleId == null)
+            // Load module details when the component is initialized
+            try
             {
-                ErrorMessage = "Module not found";
-                return;
+                Module = await ModuleDataService.GetModule(Id);
             }
-
-            Module = await GenericDataService.GetAsync<Module>(UriHelper.GetModuleUri(ModuleId.Value)) ?? Module;
-
-            if (Module == null)
+            catch (Exception e)
             {
-                ErrorMessage = "Module not found";
-                return;
+                ErrorMessage = e.Message;
             }
-
-            await base.OnInitializedAsync();
         }
 
-        private async Task DeleteModule()
+        private async Task HandleDelete()
         {
             try
             {
-                if (Module == null)
-                {
-                    return;
-                }
-                if (await GenericDataService.DeleteAsync(UriHelper.GetModuleUri(Module.Id)))
-                {
-                    NavigationManager.NavigateTo("/");
-                }
-                else
-                {
-                    ErrorMessage = "Could not delete Module";
-                }
+                await ModuleDataService.DeleteModule(Id);
+                Navigation.NavigateTo("/modules"); // Redirect to the module list page after deletion
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                ErrorMessage = ex.Message;
+                ErrorMessage = e.Message;
             }
+        }
+
+        private void CancelDelete()
+        {
+            Navigation.NavigateTo("/modules"); // Redirect to the module list page without deletion
         }
     }
 }

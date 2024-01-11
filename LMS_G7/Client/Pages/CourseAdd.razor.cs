@@ -1,15 +1,11 @@
-﻿using LMS_G7.Client.Services;
-using LMS_G7.Shared.Domain;
+﻿using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
-using static System.Net.WebRequestMethods;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class CourseAdd
-    {
-        [Inject]
-        ICourseDataService CourseDataService { get; set; }
+    public partial class CourseAdd { 
+
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }

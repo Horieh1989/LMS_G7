@@ -2,36 +2,35 @@
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 using System;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace LMS_G7.Client.Pages
 {
-    public partial class ModuleAdd
+    public partial class ModuleUpdate
     {
         [Inject]
         IModuleDataService ModuleDataService { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
-        public Module NewModule { get; set; } = new Module();
-        public string ErrorMessage { get; set; } = string.Empty;
 
-        protected override void OnInitialized()
+        [Parameter]
+        public int ModuleId { get; set; }
+
+        Module UpdatedModule { get; set; } = new Module();
+        string ErrorMessage { get; set; } = string.Empty;
+
+        protected override async Task OnInitializedAsync()
         {
-            base.OnInitialized();
+            UpdatedModule = await ModuleDataService.GetModule(ModuleId);
         }
 
         protected async Task HandleValidSubmit()
         {
             try
             {
-                var result = await Http.PostAsJsonAsync<Module>("api/Module", NewModule);
-                if (!result.IsSuccessStatusCode)
-                {
-                    ErrorMessage = "Could not add Module!";
-                }
-                NavigationManager.NavigateTo("/modules");
+                await ModuleDataService.UpdateModule(UpdatedModule);
+                NavigationManager.NavigateTo($"/moduleview/{UpdatedModule.Id}");
             }
             catch (Exception e)
             {

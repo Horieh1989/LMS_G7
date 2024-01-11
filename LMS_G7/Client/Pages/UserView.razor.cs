@@ -1,18 +1,13 @@
 ﻿// Ignore Spelling: LMS
 
-using LMS_G7.Client.Components;
-using LMS_G7.Client.Services;
 using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
-using static System.Net.WebRequestMethods;
 
 namespace LMS_G7.Client.Pages
 {
     public partial class UserView
     {
-        [Inject]
-        public IUserDataService? UserDataService { get; set; }
 
         [Parameter]
         public int Id { get; set; }
