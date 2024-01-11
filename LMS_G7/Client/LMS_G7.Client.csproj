@@ -8,15 +8,26 @@
 
   <ItemGroup>
     <Compile Remove="Component\**" />
+    <Compile Remove="Services\**" />
     <Content Remove="Component\**" />
+    <Content Remove="Services\**" />
     <EmbeddedResource Remove="Component\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="C:\Users\Elev\.nuget\packages\microsoft.net.compilers\1.0.0\build\..\tools\**" />
     <None Remove="Component\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\ActivityList.razor.cs" />
     <Compile Remove="Components\CourseList.razor.cs" />
     <Compile Remove="Components\UserStats.razor.cs" />
+    <Compile Remove="Pages\ActivityAdd.razor.cs" />
     <Compile Remove="Pages\ActivityAdd2.razor.cs" />
+    <Compile Remove="Pages\ActivityDelete.razor.cs" />
+    <Compile Remove="Pages\ActivityLst.razor.cs" />
+    <Compile Remove="Pages\ActivityUpdate.razor.cs" />
+    <Compile Remove="Pages\Activityview.razor.cs" />
     <Compile Remove="Pages\CourseDelet.razor.cs" />
     <Compile Remove="Pages\CourseUpdate2.razor.cs" />
     <Compile Remove="Pages\ModuleAdd.razor.cs" />
@@ -27,9 +38,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Components\ActivityList.razor" />
     <Content Remove="Components\UserStats.razor" />
+    <Content Remove="Pages\ActivityAdd.razor" />
     <Content Remove="Pages\ActivityAdd2.razor" />
+    <Content Remove="Pages\ActivityDelete.razor" />
+    <Content Remove="Pages\ActivityLst.razor" />
+    <Content Remove="Pages\ActivityShow.razor" />
+    <Content Remove="Pages\ActivityUpdate.razor" />
+    <Content Remove="Pages\Activityview.razor" />
+    <Content Remove="Pages\ModuleAdd.razor" />
+    <Content Remove="Pages\ModuleDelete.razor" />
     <Content Remove="Pages\ModuleDetails.razor" />
+    <Content Remove="Pages\ModuleUpdate.razor" />
+    <Content Remove="Pages\ModuleView.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,14 +65,9 @@
     <Content Include="obj\Debug\net7.0\LMS_G7.Client.sourcelink.json" />
     <Content Include="obj\LMS_G7.Client.csproj.nuget.dgspec.json" />
     <Content Include="obj\project.assets.json" />
-    <Content Include="Pages\ModuleAdd.razor.cs" />
-    <Content Include="Pages\ModuleDelete.razor.cs" />
-    <Content Include="Pages\ModuleUpdate.razor.cs" />
-    <Content Include="Pages\ModuleView.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluent.Infrastructure" Version="2.0.0-beta-01" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="0.1.0-alpha.22351.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.13" PrivateAssets="all" />

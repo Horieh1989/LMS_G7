@@ -1,5 +1,4 @@
-﻿using LMS_G7.Client.Services;
-using LMS_G7.Shared.Domain;
+﻿using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
@@ -8,8 +7,7 @@ namespace LMS_G7.Client.Pages
     [Authorize(Roles = "Admin, Teacher")]
     public partial class ActivityAdd
     {
-        [Inject]
-        public IActivityDataService ActivityDataService { get; set; }
+
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }

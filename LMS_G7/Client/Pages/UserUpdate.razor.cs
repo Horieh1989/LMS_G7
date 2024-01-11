@@ -1,5 +1,4 @@
-﻿using LMS_G7.Client.Services;
-using LMS_G7.Shared.Domain;
+﻿using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
@@ -12,8 +11,6 @@ namespace LMS_G7.Client.Pages
         [Parameter]
         public int? Id { get; set; }
 
-        [Inject]
-        public IUserDataService? UserDataService { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }

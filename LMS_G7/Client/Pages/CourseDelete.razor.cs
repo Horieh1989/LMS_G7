@@ -1,13 +1,11 @@
-﻿using LMS_G7.Client.Services;
-using LMS_G7.Shared.Domain;
+﻿using LMS_G7.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
 namespace LMS_G7.Client.Pages
 {
     public partial class CourseDelete
     {
-        [Inject]
-        public ICourseDataService CourseDataService { get; set; }
+
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
@@ -17,16 +15,16 @@ namespace LMS_G7.Client.Pages
 
         public Course Course { get; set; } = new Course();
 
-        protected override void OnInitialized()
-        {   
-            Course=CourseDataService.GetCourse(Id.Value);
+        //protected override void OnInitialized()
+        //{   
+        //    Course=CourseDataService.GetCourse(Id.Value);
 
-        }
-        protected void Delete(int Id)
-        {
-            CourseDataService.DeleteCourse(Course.Id);
-            NavigationManager.NavigateTo("/CourseLst");
-        }
+        //}
+        //protected void Delete(int Id)
+        //{
+        //    CourseDataService.DeleteCourse(Course.Id);
+        //    NavigationManager.NavigateTo("/CourseLst");
+        //}
 
 
     }
