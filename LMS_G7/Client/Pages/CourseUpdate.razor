@@ -1,10 +1,13 @@
 ﻿@page "/CourseUpdate/{Id:int}"
 @using LMS_G7.Shared.Domain
+@inject HttpClient Http
+@attribute [Authorize(Roles = "Admin, Teacher")]
+
 <h3>CourseUpdate</h3>
 
 
-<EditForm Model="@Course" @* OnValidSubmit="@HandleValidSubmit" *@>
-
+<EditForm Model="@Course" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
     <table class="table">
         <thead>
             <tr>
@@ -20,6 +23,7 @@
                 <td scope="row">@Course.Id</td>
                 <td scope="row">
                     <InputText id="Name" @bind-Value="Course.Name" class="form-control col-md-8"></InputText>
+                    <ValidationMessage For="@(()=>Course.Name)"></ValidationMessage>
                 </td>
                 <td scope="row">
                     <InputDate id="StartDate" @bind-Value="Course.StartDate" class="form-control col-md-8"></InputDate>
@@ -36,3 +40,4 @@
     <a href="@($"CourseLst")" class="btn btn-outline-primary">Back to Course list</a>&nbsp;
     <button type="submit" class="btn btn-primary me-1">Save Course</button>
 </EditForm>
+

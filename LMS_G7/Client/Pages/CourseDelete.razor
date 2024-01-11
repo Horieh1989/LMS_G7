@@ -1,5 +1,9 @@
 ﻿@page "/coursedelete/{Id:int}"
+@inject HttpClient Http
 
+
+
+@attribute [Authorize(Roles = "Admin, Teacher")]
 <h3>Course Delete</h3>
 
 <table class="table">
@@ -23,4 +27,9 @@
     </tbody>
 </table>
 <a href="@($"CourseLst")" class="btn btn-outline-primary">Back to Course list</a>
-@* <a class="btn btn-outline-primary" @onclick="() => Delete(Course.Id)">Delete</a> *@
+
+<AuthorizeView Roles="Admin, Teacher">
+    <Authorized>
+        <a class="btn btn-outline-primary" @onclick="Delete">Delete</a>
+    </Authorized>
+</AuthorizeView>

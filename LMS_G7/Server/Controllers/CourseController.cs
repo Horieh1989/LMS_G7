@@ -42,7 +42,7 @@ namespace LMS_G7.Server.Controllers
 
             return Ok(resultCourse);
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         //update
         public async Task<ActionResult<List<Course>>> UpdateCourse(int id, Course course)
 
